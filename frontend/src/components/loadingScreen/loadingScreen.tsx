@@ -7,7 +7,7 @@ const loadingScreen = () => {
         setTimeout(() => {
             console.log('loadingScreen')
             setCarregou("Loaded")
-        }, 5000)
+        }, 1000)
     }, [])
 
   return (
