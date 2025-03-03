@@ -3,9 +3,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 130px;
+    height: 100vh;
+    width: 100%;
     position: relative;
     overflow: hidden;
+    font-family: "Nunito";
+    background: rgb(4, 6, 58);
+    background: radial-gradient(circle at 50% 40%, rgba(4, 6, 58, 1) 0%, rgba(16, 16, 160, 1) 60%, rgba(43, 68, 199, 1) 100%);
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .stars {
@@ -29,11 +35,16 @@
 .star6 { top: 5%; left: 80%; width: 80px;}
 .star7 { top: 40%; left: 10%; width: 55px;}
 .star8 { top: 0%; left: 60%; width: 75px;}
+.purpleStar{
+    
+}
 
 .Icon {
-  margin-left: 60px;
-  height: 100%;
-  width: 20%;
+    display: absolute;
+    margin-left: 60px;
+    margin-top: 100px;
+    height: 300px;
+    width: 300px;
 }
 
 .HomeButtons {
@@ -41,30 +52,37 @@
     flex-direction: column;
     align-items: center;
     height: auto;
+    margin-bottom: 20px;
     /* background-color: #ce0808; */
-    padding: 20px;
     
 }
 
 .HomeButtons div {
     display: flex;
-    gap: 40px; 
-    margin: 10px; 
+    gap: 30px;
     width: 100%;
     justify-content: center;
+    align-items: center;
     /* background-color: #21f84cd9; */
 }
 
-.HomeButtons div button{
+.Link {
     display: flex;
     flex-direction: column;
-    gap: 60px;
     margin: 20px;
     width: 100%;
     justify-content: center;
     background-color: transparent;
     padding: 10px;
     border: none;
-    color: rgb(211, 211, 211);
-    font-size: 20px;
+    color: #118eedd3;
+    font-size: 25px;
+ 
+    font-family: 'Rodin';
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.Link:hover {
+    color: #f0f0f0;
 }

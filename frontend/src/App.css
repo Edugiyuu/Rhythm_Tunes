@@ -1,9 +1,15 @@
+@font-face {
+  font-family: 'Rodin';
+  src: url('../public/fonts/FOT-Rodin\ Pro\ EB.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
-  font-family: "Nunito";
-  background: rgb(4,6,58);
-  background: radial-gradient(circle, rgba(4,6,58,1) 5%, rgba(16,16,160,1) 70%, rgba(43,68,199,1) 100%);
-  background-attachment: fixed;
-  background-size: cover; 
   color: white;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
