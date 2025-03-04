@@ -1,25 +1,15 @@
 @font-face {
-  font-family: 'Faktos';
-  src: url('/fonts/Faktos.woff2') format('woff2'),
-       url('/fonts/Faktos.woff') format('woff'),
-       url('/fonts/Faktos.ttf') format('truetype');
-  font-weight: 400;
+  font-family: 'Rodin';
+  src: url('../public/fonts/FOT-Rodin\ Pro\ EB.otf') format('truetype');
+  font-weight: normal;
   font-style: normal;
 }
-
-@font-face {
-  font-family: 'Faktos';
-  src: url('/fonts/Faktos-Bold.woff2') format('woff2'),
-       url('/fonts/Faktos-Bold.woff') format('woff'),
-       url('/fonts/Faktos-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-
 
 body {
-  font-family: "Nunito";
+  color: white;
 }
-
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
