@@ -1,0 +1,33 @@
+.SelectMusic {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-family: "Rodin";
+  font-style: italic;
+  /* justify-content: center; */
+  height: 100%;
+  padding-bottom: 20%;
+  width: 100%;
+  /* position: relative; */
+  background: rgb(246, 175, 10);
+  background: radial-gradient(circle at 5% 15%, rgba(4, 6, 58, 1) 5%, rgba(16, 16, 160, 1) 50%, rgba(43, 68, 199, 1) 100%);
+}
+
+.Music {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  height: auto;
+}
+
+.Music p {
+  font-size: 30px;
+}
+.Music button {
+  font-family: "Nunito";
+  font-size: 30px;
+}
+.Music img {
+ height: 150px;
+ width: 150px;
+}

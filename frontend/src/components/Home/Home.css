@@ -7,7 +7,6 @@
     width: 100%;
     position: relative;
     overflow: hidden;
-    font-family: "Nunito";
     background: rgb(4, 6, 58);
     background: radial-gradient(circle at 50% 40%, rgba(4, 6, 58, 1) 0%, rgba(16, 16, 160, 1) 60%, rgba(43, 68, 199, 1) 100%);
     background-attachment: fixed;
@@ -35,9 +34,6 @@
 .star6 { top: 5%; left: 80%; width: 80px;}
 .star7 { top: 40%; left: 10%; width: 55px;}
 .star8 { top: 0%; left: 60%; width: 85px;}
-.purpleStar{
-    
-}
 
 .Icon {
     display: absolute;
