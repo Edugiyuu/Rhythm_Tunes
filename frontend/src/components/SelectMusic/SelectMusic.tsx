@@ -1,82 +1,54 @@
-import { useEffect } from "react";
+import { useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./SelectMusic.css";
+import { animations } from "./animations";
+import ViewMusic from "../ViewMusic/ViewMusic";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const SelectMusic = () => {
-  useEffect(() => {
-    gsap.fromTo(
-      ".Music",
-      { opacity: 0.1, y: 200, x: 550,perspective: 200, scale: 0.7, rotationX: 100, rotationY: 100, },
-      {
-        opacity: 1,
-        x: 100,
-        y: 0,
-        rotationX: 0,
-        rotationY: 0, 
-        duration: 1,
-        scale: 1,
-        ease: "power2.out",
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: ".SelectMusic",
-          start: "top 60%",
-          end: "bottom bottom",
-          scrub: 1.5,
-        },
-      }
-    );
-  }, []);
+  animations();
+
+  type Music = {
+    name: string;
+    author: string;
+    duration: number;
+  };
+
+  const [selectedMusic, setSelectedMusic] = useState<Music | null>(null);
+
+  const musics: Music[] = [
+    { name: "Heart Break", author: "Someone", duration: 100 },
+    { name: "Heart Break1", author: "Someone", duration: 100 },
+    { name: "Heart Break2", author: "Someone", duration: 100 },
+    { name: "Heart Break3", author: "Someone", duration: 80 },
+    { name: "Heart Break4", author: "Someone", duration: 60 },
+    { name: "Heart Break5", author: "Someone", duration: 120 },
+    { name: "Heart Break6", author: "Someone", duration: 120 },
+  ];
 
   return (
     <div className="SelectMusic">
-      <div>
+      <div className="AllMusics">
+        {musics.map((music) => (
           <div className="Music">
-            <img src="/star.svg" />
+            <img src="/star.svg" alt="music icon" />
             <div>
-              <p>MUSIC HEREEEEEEEEEEEE</p>
-              <button>VIEW MUSIC..</button>
+              <p>{music.name}</p>
+              <button onClick={() => setSelectedMusic(music)}>VIEW MUSIC..</button>
             </div>
           </div>
-          <div className="Music">
-            <img src="/star.svg" />
-            <div>
-              <p>MUSIC HERE</p>
-              <button>VIEW MUSIC..</button>
-            </div>
-          </div>
-          <div className="Music">
-            <img src="/star.svg" />
-            <div>
-              <p>MUSIC HERE</p>
-              <button>VIEW MUSIC..</button>
-            </div>
-          </div>
-          <div className="Music">
-            <img src="/star.svg" />
-            <div>
-              <p>MUSIC HERE</p>
-              <button>VIEW MUSIC..</button>
-            </div>
-          </div>
-          <div className="Music">
-            <img src="/star.svg" />
-            <div>
-              <p>MUSIC HERE</p>
-              <button>VIEW MUSIC..</button>
-            </div>
-          </div>
-          <div className="Music">
-            <img src="/star.svg" />
-            <div>
-              <p>MUSIC HERE</p>
-              <button>VIEW MUSIC..</button>
-            </div>
-          </div>
-          
+        ))}
       </div>
+
+      {selectedMusic && (
+        <ViewMusic
+          musicName={selectedMusic.name}
+          author={selectedMusic.author}
+          duration={selectedMusic.duration}
+        />
+      )}
     </div>
   );
 };
