@@ -29,7 +29,7 @@ const ViewMusic = ({ musicName, author, duration }: ViewMusicProps) => {
                 <div className='StartMusicBox'>
                     <CustomLink to="/select-music" title='START!' className='StartMusic' />
                     <AudioPlayer
-                        autoPlay
+                        autoPlay 
                         src={musicTest2}
                         onPlay={e => console.log("onPlay")}
                         volume={0.3}
