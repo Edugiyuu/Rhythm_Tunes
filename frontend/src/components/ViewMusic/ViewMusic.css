@@ -1,0 +1,93 @@
+.ViewMusic {
+    display: flex;
+    font-family: "Nunito";
+    position: fixed;
+    width: 50%;
+    height: 70%;
+    margin: 20px;
+    margin-left: 50%;
+}
+
+.Infos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    align-content: center;
+    font-family: "Nunito";
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+    background-color: white;
+    gap: 20px;
+
+}
+
+.ViewMusic p {
+    color: black;
+}
+
+.ViewMusic img {
+    margin-left: 9%;
+    border-radius: 5px;
+    width: 30%;
+    min-width: 150px;
+    height: 40%;
+}
+
+.StartMusicBox {
+
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.StartMusic {
+    color: rgb(255, 255, 255);
+    font-size: large;
+    text-decoration: none;
+    background-color: rgb(37, 37, 37);
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 2px;
+    font-family: 'Rodin';
+}
+
+.StartMusic:hover {
+    transition: all 0.2s ease-in-out;
+    letter-spacing: 4px;
+}
+
+.rhap_container {
+    box-shadow: none !important;
+    border: none !important;
+    background-color: rgb(255, 255, 255) !important;
+}
+
+@media (max-width: 1124px) {
+    .Infos {
+        height: 80%;
+        gap: 10px;
+        align-items: center;
+        align-content: center;
+    }
+    .ViewMusic img {
+        max-height: 160px;
+    }
+}
+
+@media (max-width: 568px) {
+    .Infos {
+        display: none;
+    }
+
+    .ViewMusic img {
+        max-height: 160px;
+    }
+
+}
