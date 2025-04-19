@@ -37,3 +37,28 @@ export const uploadMusic = async (req: Request, res: Response): Promise<void> =>
         res.status(500).json({ error: 'Erro interno.' });
     }
 };
+export const getMusic = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    try {
+        const music = await Music.findById(id);
+        console.log('ID da música:', id, music);
+
+        if (!music) {
+            res.status(404).json({ error: 'Música não encontrada.' });
+        }
+
+        res.status(200).json({ message: 'Music fetched successfully' });
+    } catch (error) {
+        res.status(500).json({ error: 'Erro interno.' });
+    }
+};
+
+export const getAllMusics = async (req: Request, res: Response) => {
+    try {
+        const musics = await Music.find();
+        res.status(200).json(musics);
+    } catch (error) {
+        console.error('Erro ao buscar músicas:', error);
+        res.status(500).json({ error: 'Erro interno.' });
+    }
+};
