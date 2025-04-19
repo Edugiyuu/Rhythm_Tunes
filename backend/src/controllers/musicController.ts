@@ -14,17 +14,15 @@ export const uploadMusic = async (req: Request, res: Response): Promise<void> =>
             async (error, result) => {
                 if (error || !result) {
                     console.error('Erro no Cloudinary:', error);
-                    res.status(500).json({ error: 'Erro ao enviar música.' });
-                    return;
+                    return res.status(500).json({ error: 'Erro ao enviar música.' }); 
                 }
 
                 const newMusic = new Music({
                     title: JSON.parse(req.body.title),
-                    description: JSON.parse(req.body.description),
                     musicUrl: result.secure_url,
-                    cloudinaryId: result.public_id
+                    cloudinaryId: result.public_id,
+                    lyrics: JSON.parse(req.body.lyrics)
                 });
-
 
                 await newMusic.save();
 
@@ -32,7 +30,6 @@ export const uploadMusic = async (req: Request, res: Response): Promise<void> =>
             }
         );
 
-        // envia o buffer pra stream
         stream.end(req.file.buffer);
 
     } catch (error) {

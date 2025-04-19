@@ -1,16 +1,18 @@
-import mongoose, { Schema, model, Document } from 'mongoose';
+import { Schema, model, Document } from 'mongoose';
 
 interface IMusic extends Document {
     title: string;
     musicUrl: string;
     cloudinaryId: string;
+    lyrics:string
 }
 
-const musicSchema = new mongoose.Schema({
+const musicSchema = new Schema({
     title: { type: String, required: true },
     description: { type: String },
     musicUrl: { type: String, required: true },
-    cloudinaryId: { type: String, required: true } // <- esse aqui
+    cloudinaryId: { type: String, required: true },
+    lyrics: { type: String, required: true }
 });
 
 
