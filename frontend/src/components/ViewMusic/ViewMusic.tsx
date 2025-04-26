@@ -7,12 +7,12 @@ import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 
 type ViewMusicProps = {
-    musicName: string;
-    author: string;
-    duration: number;
+    title: string;
+    lyrics?: string;
+    musicUrl?: string;
 };
 
-const ViewMusic = ({ musicName, author, duration }: ViewMusicProps) => {
+const ViewMusic = ({ title }: ViewMusicProps) => {
     const triggerAnimation = animations();
 
     useEffect(() => {
@@ -23,9 +23,9 @@ const ViewMusic = ({ musicName, author, duration }: ViewMusicProps) => {
         <div className="ViewMusic">
             <div className='Infos'>
                 <img src="./imgs/P4G.png" alt="" />
-                <p>Music Name: {musicName}</p>
-                <p>Author: {author}</p>
-                <p>Duration in secs: {duration}</p>
+                <p>Music Name: {title}</p>
+                <p>Author: {}</p>
+                <p>Duration in secs: {}</p>
                 <div className='StartMusicBox'>
                     <CustomLink to="/select-music" title='START!' className='StartMusic' />
                     <AudioPlayer
