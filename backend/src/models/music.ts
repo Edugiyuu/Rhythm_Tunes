@@ -1,14 +1,14 @@
 import { Schema, model, Document } from 'mongoose';
 
 interface IMusic extends Document {
-    title: string;
+    name: string;
     musicUrl: string;
     cloudinaryId: string;
     lyrics:string
 }
 
 const musicSchema = new Schema({
-    title: { type: String, required: true },
+    name: { type: String, required: true },
     description: { type: String },
     musicUrl: { type: String, required: true },
     cloudinaryId: { type: String, required: true },

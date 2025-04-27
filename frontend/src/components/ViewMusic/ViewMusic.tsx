@@ -2,17 +2,17 @@ import { useEffect } from 'react';
 import { animations } from './animations';
 import './ViewMusic.css';
 import CustomLink from '../../utils/CustomLink';
-import musicTest2 from '../../Sounds/musicTest2.mp3';
+
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 
 type ViewMusicProps = {
-    title: string;
+    name: string;
     lyrics?: string;
-    musicUrl?: string;
+    musicUrl: string;
 };
 
-const ViewMusic = ({ title }: ViewMusicProps) => {
+const ViewMusic = ({ name, musicUrl }: ViewMusicProps) => {
     const triggerAnimation = animations();
 
     useEffect(() => {
@@ -23,14 +23,14 @@ const ViewMusic = ({ title }: ViewMusicProps) => {
         <div className="ViewMusic">
             <div className='Infos'>
                 <img src="./imgs/P4G.png" alt="" />
-                <p>Music Name: {title}</p>
+                <p>Music Name: {name}</p>
                 <p>Author: {}</p>
                 <p>Duration in secs: {}</p>
                 <div className='StartMusicBox'>
                     <CustomLink to="/select-music" title='START!' className='StartMusic' />
                     <AudioPlayer
                         autoPlay 
-                        src={musicTest2}
+                        src={musicUrl}
                         onPlay={e => console.log("onPlay")}
                         volume={0.3}
                         style={{width: '100%', height:'100%'}}

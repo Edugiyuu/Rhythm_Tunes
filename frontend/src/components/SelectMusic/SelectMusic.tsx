@@ -12,7 +12,7 @@ const SelectMusic = () => {
 
   type Music = {
     lyrics: string;
-    title: string;
+    name: string;
     musicUrl: string;
   };
 
@@ -40,7 +40,7 @@ const SelectMusic = () => {
           <div className="Music">
             <img src="/star.svg" alt="music icon" />
             <div>
-              <p>{music.title}</p>
+              <p>{music.name}</p>
               <button onClick={() => setSelectedMusic(music)}>VIEW MUSIC..</button>
             </div>
           </div>
@@ -49,8 +49,8 @@ const SelectMusic = () => {
 
       {selectedMusic && (
         <ViewMusic
-          title={selectedMusic.title}
-       
+          name={selectedMusic.name}
+          musicUrl={selectedMusic.musicUrl}
         />
       )}
     </div>

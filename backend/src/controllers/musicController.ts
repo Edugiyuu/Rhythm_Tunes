@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { v2 as cloudinary } from 'cloudinary';
+import cloudinary from '../config/cloudinary';
 import Music from '../models/music';
 
 export const uploadMusic = async (req: Request, res: Response): Promise<void> => {
@@ -18,7 +18,7 @@ export const uploadMusic = async (req: Request, res: Response): Promise<void> =>
                 }
 
                 const newMusic = new Music({
-                    title: JSON.parse(req.body.title),
+                    name: JSON.parse(req.body.name),
                     musicUrl: result.secure_url,
                     cloudinaryId: result.public_id,
                     lyrics: JSON.parse(req.body.lyrics)
