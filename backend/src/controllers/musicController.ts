@@ -47,7 +47,7 @@ export const getMusic = async (req: Request, res: Response) => {
             res.status(404).json({ error: 'Música não encontrada.' });
         }
 
-        res.status(200).json({ message: 'Music fetched successfully' });
+        res.status(200).json(music);
     } catch (error) {
         res.status(500).json({ error: 'Erro interno.' });
     }

@@ -10,9 +10,10 @@ type ViewMusicProps = {
     name: string;
     lyrics?: string;
     musicUrl: string;
+    _id: string;
 };
 
-const ViewMusic = ({ name, musicUrl }: ViewMusicProps) => {
+const ViewMusic = ({ name, musicUrl, _id}: ViewMusicProps) => {
     const triggerAnimation = animations();
 
     useEffect(() => {
@@ -27,7 +28,7 @@ const ViewMusic = ({ name, musicUrl }: ViewMusicProps) => {
                 <p>Author: {}</p>
                 <p>Duration in secs: {}</p>
                 <div className='StartMusicBox'>
-                    <CustomLink to="/select-music" title='START!' className='StartMusic' />
+                    <CustomLink to={`/sing-music/${_id}`} title='START!' className='StartMusic' />
                     <AudioPlayer
                         autoPlay 
                         src={musicUrl}

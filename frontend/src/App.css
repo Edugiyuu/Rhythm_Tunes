@@ -8,6 +8,20 @@
 body {
   color: white;
 }
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: radial-gradient(circle at 5% 15%, rgba(4, 6, 58, 1) 5%, rgba(16, 16, 160, 1) 50%, rgba(43, 68, 199, 1) 100%);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 * {
   margin: 0;
   padding: 0;

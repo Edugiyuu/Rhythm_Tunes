@@ -14,6 +14,7 @@ const SelectMusic = () => {
     lyrics: string;
     name: string;
     musicUrl: string;
+    _id: string;
   };
 
   const [selectedMusic, setSelectedMusic] = useState<Music | null>(null);
@@ -51,6 +52,7 @@ const SelectMusic = () => {
         <ViewMusic
           name={selectedMusic.name}
           musicUrl={selectedMusic.musicUrl}
+          _id={selectedMusic._id}
         />
       )}
     </div>
