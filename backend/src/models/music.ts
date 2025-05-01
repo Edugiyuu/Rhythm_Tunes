@@ -1,10 +1,15 @@
 import { Schema, model, Document } from 'mongoose';
 
+interface Lyrics {
+    time: number;
+    text: string;
+}
+
 interface IMusic extends Document {
     name: string;
     musicUrl: string;
     cloudinaryId: string;
-    lyrics:string
+    lyrics:Lyrics[];
 }
 
 const musicSchema = new Schema({
@@ -12,7 +17,10 @@ const musicSchema = new Schema({
     description: { type: String },
     musicUrl: { type: String, required: true },
     cloudinaryId: { type: String, required: true },
-    lyrics: { type: String, required: true }
+    lyrics: [{
+        time: { type: Number, required: true },
+        text: { type: String, required: true }
+      }]
 });
 
 
