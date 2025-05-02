@@ -8,7 +8,6 @@ import 'react-h5-audio-player/lib/styles.css';
 
 type ViewMusicProps = {
     name: string;
-    lyrics?: string;
     musicUrl: string;
     _id: string;
 };

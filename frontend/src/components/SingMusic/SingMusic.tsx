@@ -4,6 +4,8 @@ import "react-h5-audio-player/lib/styles.css";
 import "../SingMusic/SingMusic.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Chie from "../../assets/imgs/Chie-1.png";
+import { triggerDialogAnimation, triggerBackDialogAnimation } from "./animations";
 
 interface Music {
   musicUrl: string;
@@ -32,6 +34,15 @@ function SingMusic() {
       });
   }, [id]);
 
+  useEffect(() => {
+    if (currentSubtitle === "♪♪♪") {
+      triggerDialogAnimation();
+
+    }else{
+      triggerBackDialogAnimation();
+    }
+  }, [currentSubtitle]);
+
   const handleTimeUpdate = () => {
     const audio = document.querySelector("audio");
     if (!audio) return;
@@ -48,17 +59,21 @@ function SingMusic() {
   return (
     <div className="SingMusic">
       <AudioPlayer
-        autoPlay
         src={data?.musicUrl}
         onListen={handleTimeUpdate}
-        showSkipControls={true}
+        showSkipControls={false}
         showJumpControls={false}
         customVolumeControls={[]}
+        
         layout="horizontal"
+        volume={1}
       />
 
       <div className="lyrics">
-        <h2>{currentSubtitle}</h2>
+        <h1>{currentSubtitle.toUpperCase()}</h1>
+      </div>
+      <div className="PersonaChar">
+        <img src={Chie} alt="" />
       </div>
     </div>
   );
