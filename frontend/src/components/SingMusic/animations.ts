@@ -23,8 +23,21 @@ export const triggerBackDialogAnimation = () => {
       x: 550,
       duration: 2,
       opacity: 0,
-
       ease: "expo.inOut",
     },
   );
+};
+
+export const TPDialogBack = () => {
+  gsap.to('.PersonaChar',
+    {
+      duration: 0,
+      opacity: 0,
+      ease: "expo.inOut",
+    },
+  );
+};
+
+export const lyricsHighLightMove = () => {
+
 };
