@@ -21,7 +21,8 @@ const upload = multer({ storage });
  
 export const uploadFields = upload.fields([
     { name: 'music', maxCount: 1 },
-    { name: 'instrumental', maxCount: 1 }
+    { name: 'instrumental', maxCount: 1 },
+    { name: 'albumImage', maxCount: 1 }
 ]);
 
 // Exporta o middleware configurado

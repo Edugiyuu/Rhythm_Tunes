@@ -25,7 +25,7 @@ const Home = () => {
             <div className='HomeButtons'>
                 <div>
                     <CustomLink to='/musics' title='SELECT MUSIC' className='Link' />
-                    <CustomLink to='/musics' title='SELECT MUSIC' className='Link'/>
+                    <CustomLink to='/musics' title='BONUS MUSICS' className='Link'/>
                 </div>
                 <div>
                     <CustomLink to='/musics' title='SELECT MUSIC' className='Link' />

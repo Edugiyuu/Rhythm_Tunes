@@ -92,7 +92,6 @@ function SingMusic() {
             </div>
           );
         }).reverse().find(Boolean)}
-        {/* <h1>{currentSubtitle.toUpperCase()}</h1> */}
       </div>
 
       <div className="PersonaChar">

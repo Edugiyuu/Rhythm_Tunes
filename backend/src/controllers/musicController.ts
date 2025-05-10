@@ -3,9 +3,8 @@ import cloudinary from '../config/cloudinary';
 import Music from '../models/music';
 
 
-// O file seria music[0] ou instrumental[0]
+// O file seria music[0], instrumental[0] ou albumImage[0]
 const uploadToCloudinary = (file: Express.Multer.File): Promise<any> => {
-    // não entendi o que é resolve e reject
     // resolve: função chamada quando o upload é bem-sucedido
     // reject: função chamada quando o upload falha
     return new Promise((resolve, reject) => {
@@ -29,25 +28,27 @@ const uploadToCloudinary = (file: Express.Multer.File): Promise<any> => {
 export const uploadMusic = async (req: Request, res: Response): Promise<any> => {
     try {
         // Pega os arquivos do request
-        const { music, instrumental } = req.files as {
+        const { music, instrumental,albumImage } = req.files as {
             music: Express.Multer.File[];
             instrumental: Express.Multer.File[];
+            albumImage: Express.Multer.File[];
         };
 
         // Faz upload dos arquivos com a função uploadToCloudinary
         const musicResult = await uploadToCloudinary(music[0]);
         const instrumentalResult = await uploadToCloudinary(instrumental[0]);
+        const albumImageResult = await uploadToCloudinary(albumImage[0]);
 
         // Cria uma nova musica com os dados recebidos
         const newMusic = new Music({
-            name: JSON.parse(req.body.name),                  // Nome da música
-            musicUrl: musicResult.secure_url,                 // URL segura da música com vocal
+            name: JSON.parse(req.body.name),
+            musicUrl: musicResult.secure_url,
             instrumentalUrl: instrumentalResult.secure_url,    // URL segura do instrumental
+            albumImageUrl: albumImageResult.secure_url,        // URL segura da imagem do álbum
             cloudinaryId: musicResult.public_id,              // ID para referência no Cloudinary
-            lyrics: JSON.parse(req.body.lyrics)               // Array com a letra sincronizada
+            lyrics: JSON.parse(req.body.lyrics)
         });
-
-        // Salva a nova música no banco de dados MongoDB
+        
         await newMusic.save();
 
         res.status(201).json({

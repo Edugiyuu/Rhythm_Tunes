@@ -14,6 +14,7 @@ const SelectMusic = () => {
     lyrics: string;
     name: string;
     musicUrl: string;
+    albumImageUrl: string;
     _id: string;
   };
 
@@ -53,6 +54,7 @@ const SelectMusic = () => {
           name={selectedMusic.name}
           musicUrl={selectedMusic.musicUrl}
           _id={selectedMusic._id}
+          albumImageUrl={selectedMusic.albumImageUrl}
         />
       )}
     </div>

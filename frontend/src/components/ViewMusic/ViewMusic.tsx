@@ -9,10 +9,11 @@ import 'react-h5-audio-player/lib/styles.css';
 type ViewMusicProps = {
     name: string;
     musicUrl: string;
+    albumImageUrl: string;
     _id: string;
 };
 
-const ViewMusic = ({ name, musicUrl, _id}: ViewMusicProps) => {
+const ViewMusic = ({ name, musicUrl, _id, albumImageUrl}: ViewMusicProps) => {
     const triggerAnimation = animations();
 
     useEffect(() => {
@@ -22,7 +23,7 @@ const ViewMusic = ({ name, musicUrl, _id}: ViewMusicProps) => {
     return (
         <div className="ViewMusic">
             <div className='Infos'>
-                <img src="./imgs/P4G.png" alt="" />
+                <img src={albumImageUrl} alt="" />
                 <p>Music Name: {name}</p>
                 <p>Author: {}</p>
                 <p>Duration in secs: {}</p>
