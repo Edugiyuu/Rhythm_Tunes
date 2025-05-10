@@ -8,6 +8,7 @@ import { triggerDialogAnimation, triggerBackDialogAnimation, TPDialogBack } from
 
 interface Music {
   musicUrl: string;
+  instrumentalUrl: string;
 }
 
 interface Subtitle {
@@ -62,7 +63,8 @@ function SingMusic() {
   return (
     <div className="SingMusic">
       <AudioPlayer
-        src={data?.musicUrl}
+      //musicUrl ou instrumentalUrl
+        src={data?.instrumentalUrl}
         onListen={handleTimeUpdate}
         showSkipControls={false}
         showJumpControls={false}
