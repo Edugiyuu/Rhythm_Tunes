@@ -19,7 +19,7 @@ export const animations = () => {
                 stagger: 0.2,
                 scrollTrigger: {
                     trigger: ".SelectMusic",
-                    start: "top 60%",
+                    start: "top 50%",
                     end: "bottom bottom",
                     scrub: 1.5,
                 },
