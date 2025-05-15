@@ -4,7 +4,7 @@ import "react-h5-audio-player/lib/styles.css";
 import "../SingMusic/SingMusic.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { triggerDialogAnimation, triggerBackDialogAnimation, TPDialogBack, triggerBackDialogAnimationMode } from "./animations";
+import { triggerDialogAnimation, triggerBackDialogAnimation, TPDialogBack, triggerBackDialogAnimationMode, triggerDialogAnimationMode } from "./animations";
 import { PlayAudio } from "../../utils/PlayAudio";
 
 interface Music {
@@ -23,13 +23,27 @@ function SingMusic() {
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [currentSubtitle, setCurrentSubtitle] = useState<string>("");
   const [randomNumber, setRandomNumber] = useState<number>(0);
+  const [pacienceLevel, setpacienceLevel] = useState<number>(0);
   const [selectMode, setSelectMode] = useState<boolean>(true);
   const [audioUrl, setAudioUrl] = useState<string>("");
   const { id } = useParams();
 
+useEffect(() => {
+  PlayAudio(`/audios/Chie/ModeSelector/Chie-${pacienceLevel}.mp3`);
+  triggerDialogAnimationMode();
+}, [pacienceLevel]);
+
+useEffect(() => {
+  setTimeout(() => {
+    setpacienceLevel(1);
+  }, 20000);
+  setTimeout(() => {
+    setpacienceLevel(2);
+  }, 40000);
+}, []);
+
   useEffect(() => {
     TPDialogBack();
-    PlayAudio(`/audios/Chie/ModeSelector/Chie-0.mp3`);
     axios.get(`http://localhost:3000/music/${id}`)
       .then((res) => {
         setData(res.data);
@@ -134,7 +148,7 @@ function SingMusic() {
       </div>
 
       <div className="PersonaChar" id="ChieMode">
-        <img src={`/imgs/Chie/ModeSelector/Chie-${randomNumber}.png`} />
+        <img src={`/imgs/Chie/ModeSelector/Chie-${pacienceLevel}.png`} />
       </div>
 
       <div className="PersonaChar" id="RandomChie">
