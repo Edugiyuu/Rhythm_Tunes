@@ -28,19 +28,31 @@ function SingMusic() {
   const [audioUrl, setAudioUrl] = useState<string>("");
   const { id } = useParams();
 
-useEffect(() => {
-  PlayAudio(`/audios/Chie/ModeSelector/Chie-${pacienceLevel}.mp3`);
-  triggerDialogAnimationMode();
-}, [pacienceLevel]);
+  useEffect(() => {
+    PlayAudio(`/audios/Chie/ModeSelector/Chie-${pacienceLevel}.mp3`);
+    triggerDialogAnimationMode();
+  }, [pacienceLevel]);
 
-useEffect(() => {
-  setTimeout(() => {
-    setpacienceLevel(1);
-  }, 20000);
-  setTimeout(() => {
-    setpacienceLevel(2);
-  }, 40000);
-}, []);
+  useEffect(() => {
+    if (selectMode) {
+      const timer1 = setTimeout(() => {
+        console.log("Timer1 executado");
+        setpacienceLevel(1);
+      }, 10000);
+
+      const timer2 = setTimeout(() => {
+        console.log("Timer2 executado");
+        setpacienceLevel(2);
+      }, 40000);
+
+      return () => {
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+      }
+    } else {
+      setpacienceLevel(0);
+    }
+  }, [selectMode]);
 
   useEffect(() => {
     TPDialogBack();
