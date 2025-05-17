@@ -1,16 +1,17 @@
 .SelectMusic {
   display: flex;
   flex-direction: row;
-  align-items: start;
+  align-items: flex-start;
   font-family: "Rodin";
   font-style: italic;
-  /* justify-content: center; */
-  height: 100%;
-  padding-bottom: 20%;
   width: 100%;
+  min-height: 100vh;
+  padding-bottom: 10%;
   position: relative;
-  background: radial-gradient(circle at 5% 15%, rgba(4, 6, 58, 1) 5%, rgba(16, 16, 160, 1) 50%, rgba(43, 68, 199, 1) 100%);
+  overflow: hidden;
+  z-index: 1;
 }
+
 
 .Music {
   display: flex;
@@ -18,6 +19,7 @@
   width: auto;
   height: auto;
   margin-left: 5%;
+  padding-top: 10px;
 }
 
 .Music p {

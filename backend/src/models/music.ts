@@ -1,18 +1,31 @@
 import { Schema, model, Document } from 'mongoose';
 
+interface Lyrics {
+    time: number;
+    text: string;
+}
+
 interface IMusic extends Document {
-    title: string;
+    name: string;
     musicUrl: string;
+    albumImageUrl: string;
+    instrumentalUrl: string;
     cloudinaryId: string;
-    lyrics:string
+    lyrics:Lyrics[];
 }
 
 const musicSchema = new Schema({
-    title: { type: String, required: true },
+    name: { type: String, required: true },
     description: { type: String },
     musicUrl: { type: String, required: true },
+    instrumentalUrl: { type: String, required: true },
+    albumImageUrl: { type: String, required: true },
     cloudinaryId: { type: String, required: true },
-    lyrics: { type: String, required: true }
+    lyrics: [{
+        _id: false,
+        time: { type: Number, required: true },
+        text: { type: String, required: true }
+      }]
 });
 
 

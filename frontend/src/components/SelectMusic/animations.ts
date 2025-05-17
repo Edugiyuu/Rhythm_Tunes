@@ -1,11 +1,9 @@
-import { useEffect } from 'react'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 export const animations = () => {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    useEffect(() => {
         gsap.fromTo(
             ".Music",
             { opacity: 0.1, y: 200, x: 550, perspective: 200, scale: 0.7, rotationX: 100, rotationY: 100, },
@@ -21,7 +19,7 @@ export const animations = () => {
                 stagger: 0.2,
                 scrollTrigger: {
                     trigger: ".SelectMusic",
-                    start: "top 60%",
+                    start: "top 50%",
                     end: "bottom bottom",
                     scrub: 1.5,
                 },
@@ -29,5 +27,4 @@ export const animations = () => {
         );
         console.log("animação pronta");
         
-    }, []);
 }

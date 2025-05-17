@@ -1,32 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./SelectMusic.css";
 import { animations } from "./animations";
 import ViewMusic from "../ViewMusic/ViewMusic";
+import axios from "axios";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const SelectMusic = () => {
-  animations();
 
   type Music = {
+    lyrics: string;
     name: string;
-    author: string;
-    duration: number;
+    musicUrl: string;
+    albumImageUrl: string;
+    _id: string;
   };
 
   const [selectedMusic, setSelectedMusic] = useState<Music | null>(null);
 
-  const musics: Music[] = [
-    { name: "Heart Break", author: "Someone", duration: 100 },
-    { name: "Heart Break1", author: "Someone", duration: 100 },
-    { name: "Heart Break2", author: "Someone", duration: 100 },
-    { name: "Heart Break3", author: "Someone", duration: 80 },
-    { name: "Heart Break4", author: "Someone", duration: 60 },
-    { name: "Heart Break5", author: "Someone", duration: 120 },
-    { name: "Heart Break6", author: "Someone", duration: 120 },
-  ];
+  const [musics, setMusics] = useState<Music[]>([])
+
+  useEffect(() => {
+
+		axios.get(`http://localhost:3000/musics`)
+			.then((res) => {
+        animations();
+				console.log(res.data);
+				setMusics(res.data);
+			})
+			.catch((err) => {
+				console.error(err);
+			});
+	}, []);
 
   return (
     <div className="SelectMusic">
@@ -44,9 +51,10 @@ const SelectMusic = () => {
 
       {selectedMusic && (
         <ViewMusic
-          musicName={selectedMusic.name}
-          author={selectedMusic.author}
-          duration={selectedMusic.duration}
+          name={selectedMusic.name}
+          musicUrl={selectedMusic.musicUrl}
+          _id={selectedMusic._id}
+          albumImageUrl={selectedMusic.albumImageUrl}
         />
       )}
     </div>

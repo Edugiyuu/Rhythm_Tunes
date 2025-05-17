@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import audioRoutes from './audioRoutes';
+import musicRoutes from './musicRoutes';
 
 const router = Router();
 
-router.use(audioRoutes);
+router.use(musicRoutes);
 
 export default router;
