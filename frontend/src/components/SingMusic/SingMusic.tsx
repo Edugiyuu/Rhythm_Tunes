@@ -38,7 +38,7 @@ function SingMusic() {
       const timer1 = setTimeout(() => {
         console.log("Timer1 executado");
         setpacienceLevel(1);
-      }, 10000);
+      }, 20000);
 
       const timer2 = setTimeout(() => {
         console.log("Timer2 executado");
@@ -118,11 +118,12 @@ function SingMusic() {
         layout="horizontal"
         autoPlay={true}
         volume={0.5}
+        onEnded={() => console.log("Parabens, acabou")}
       />
 
       {selectMode && (
         <div className="ModeSelector">
-          <h2>Chose your mode</h2>
+          <h2>Choose your mode</h2>
           <div className="ModeButtons">
             <button className="ModeButton" onClick={() => handleModeSelect(true)}>
               Sing together

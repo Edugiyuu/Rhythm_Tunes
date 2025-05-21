@@ -163,3 +163,9 @@
     clip-path: polygon(20% 0, 100% 0%, 80% 100%, 0% 100%);
     transform: scale(1.05);
 }
+.SingMusic .rhap_main-controls-button.rhap_play-pause-button {
+  display: none;
+}
+.SingMusic .rhap_progress-container {
+  pointer-events: none;
+}

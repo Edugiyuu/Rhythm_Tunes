@@ -26,7 +26,6 @@ const ViewMusic = ({ name, musicUrl, _id, albumImageUrl}: ViewMusicProps) => {
                 <img src={albumImageUrl} alt="" />
                 <p>Music Name: {name}</p>
                 <p>Author: {}</p>
-                <p>Duration in secs: {}</p>
                 <div className='StartMusicBox'>
                     <CustomLink to={`/sing-music/${_id}`} title='START!' className='StartMusic' />
                     <AudioPlayer
