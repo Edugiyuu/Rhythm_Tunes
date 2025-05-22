@@ -31,7 +31,6 @@ const ViewMusic = ({ name, musicUrl, _id, albumImageUrl}: ViewMusicProps) => {
                     <AudioPlayer
                         autoPlay 
                         src={musicUrl}
-                        onPlay={e => console.log("onPlay")}
                         volume={0.3}
                         style={{width: '100%', height:'100%'}}
                     />

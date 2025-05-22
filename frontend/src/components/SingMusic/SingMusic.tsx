@@ -6,10 +6,13 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { triggerDialogAnimation, triggerBackDialogAnimation, TPDialogBack, triggerBackDialogAnimationMode, triggerDialogAnimationMode } from "./animations";
 import { PlayAudio } from "../../utils/PlayAudio";
+import MusicEnded from "../MusicEnded/MusicEnded";
 
 interface Music {
   musicUrl: string;
   instrumentalUrl: string;
+  albumImageUrl: string;
+  name: string;
 }
 
 interface Subtitle {
@@ -25,6 +28,7 @@ function SingMusic() {
   const [randomNumber, setRandomNumber] = useState<number>(0);
   const [pacienceLevel, setpacienceLevel] = useState<number>(0);
   const [selectMode, setSelectMode] = useState<boolean>(true);
+  const [showResult, setShowResult] = useState<boolean>(false);
   const [audioUrl, setAudioUrl] = useState<string>("");
   const { id } = useParams();
 
@@ -74,7 +78,10 @@ function SingMusic() {
     } else {
       triggerBackDialogAnimation();
     }
-  }, [currentSubtitle]);
+    if (showResult) {
+      triggerBackDialogAnimation();
+    }
+  }, [currentSubtitle, showResult]);
 
   const handleTimeUpdate = () => {
     const audio = document.querySelector("audio");
@@ -118,7 +125,7 @@ function SingMusic() {
         layout="horizontal"
         autoPlay={true}
         volume={0.5}
-        onEnded={() => console.log("Parabens, acabou")}
+        onEnded={() => setShowResult(true)}
       />
 
       {selectMode && (
@@ -134,31 +141,38 @@ function SingMusic() {
           </div>
         </div>
       )}
+       {showResult && (
+        <MusicEnded 
+          albumImageUrl={data?.albumImageUrl || ""} 
+          musicName={data?.name || ""}
+        />
+      )}
+      {!showResult && (
+        <div className="lyrics">
+          {lyrics.map((line, i) => {
+            // Pula as letras que ainda não devem ser mostradas baseado no tempo atual
+            if (currentTime < line.time) return null;
+            // Pega as próximas 2 linhas da letra para mostrar como prévia
 
-      <div className="lyrics">
-        {lyrics.map((line, i) => {
-          // Pula as letras que ainda não devem ser mostradas baseado no tempo atual
-          if (currentTime < line.time) return null;
-          // Pega as próximas 2 linhas da letra para mostrar como prévia
+            const nextLines = lyrics.slice(i + 1, i + 3);
 
-          const nextLines = lyrics.slice(i + 1, i + 3);
+            return (
+              <div key={line.time}>
+                <h1 className="highlighted">{line.text}</h1>
+                {/* Mostra as próximas 2 linhas */}
+                {nextLines.map((nextLine) => (
+                  <p key={nextLine.time} className="faded">
+                    {nextLine.text}
+                  </p>
+                ))}
+              </div>
+            );
+            // Inverte o array para mostrar a letra mais recente primeiro
+            // Encontra o primeiro elemento não-nulo (letra atual a ser mostrada)
+          }).reverse().find(Boolean)}
 
-          return (
-            <div key={line.time}>
-              <h1 className="highlighted">{line.text}</h1>
-              {/* Mostra as próximas 2 linhas */}
-              {nextLines.map((nextLine) => (
-                <p key={nextLine.time} className="faded">
-                  {nextLine.text}
-                </p>
-              ))}
-            </div>
-          );
-          // Inverte o array para mostrar a letra mais recente primeiro
-          // Encontra o primeiro elemento não-nulo (letra atual a ser mostrada)
-        }).reverse().find(Boolean)}
-
-      </div>
+        </div>
+      )}
 
       <div className="PersonaChar" id="ChieMode">
         <img src={`/imgs/Chie/ModeSelector/Chie-${pacienceLevel}.png`} />
