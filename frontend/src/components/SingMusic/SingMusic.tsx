@@ -4,7 +4,7 @@ import "react-h5-audio-player/lib/styles.css";
 import "../SingMusic/SingMusic.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { triggerDialogAnimation, triggerBackDialogAnimation, TPDialogBack, triggerBackDialogAnimationMode, triggerDialogAnimationMode } from "./animations";
+import { triggerDialogAnimation, triggerBackDialogAnimation, TPDialogBack, triggerBackDialogAnimationMode, triggerDialogAnimationMode, triggerStar } from "./animations";
 import { PlayAudio } from "../../utils/PlayAudio";
 import MusicEnded from "../MusicEnded/MusicEnded";
 
@@ -125,8 +125,21 @@ function SingMusic() {
         layout="horizontal"
         autoPlay={true}
         volume={0.5}
-        onEnded={() => setShowResult(true)}
+        onEnded={() => { setShowResult(true), triggerStar() }}
       />
+      <div className="stars">
+        <img src="/star.svg" className="star star1" />
+        <img src="/star.svg" className="star star2" />
+        <img src="/star.svg" className="star star3" />
+        <img src="/star.svg" className="star star4" />
+        <img src="/star.svg" className="star star5" />
+        <img src="/star.svg" className="star star6" />
+        <img src="/star.svg" className="star star7" />
+        <img src="/star.svg" className="star star8" />
+      </div>
+      <div className='starBox'>
+        <img src="/star.svg" id="starEnd" />
+      </div>
 
       {selectMode && (
         <div className="ModeSelector">
@@ -141,7 +154,7 @@ function SingMusic() {
           </div>
         </div>
       )}
-       {showResult && (
+      {showResult && (
         <MusicEnded 
           albumImageUrl={data?.albumImageUrl || ""} 
           musicName={data?.name || ""}
