@@ -19,11 +19,23 @@
 }
 
 .highlighted {
-    color: #ff4081;
-    font-weight: bold;
-    transition: color 0.3s ease;
-    animation: slideIn 0.2s ease-in-out forwards;
+  font-weight: bold;
+  background: linear-gradient(to right, #ff4081 0%, #ff4081 48%, white 50%, white 100%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fillLeftToRight 1s forwards ease-in-out;
+  animation-duration: 2s;
 }
+
+@keyframes fillLeftToRight {
+  to {
+    background-position: 0 0;
+  }
+}
+
+
 
 .faded {
     font-weight: bold;
@@ -198,3 +210,4 @@
 .SingMusic .rhap_progress-container {
   pointer-events: none;
 } */
+

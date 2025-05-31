@@ -155,8 +155,8 @@ function SingMusic() {
         </div>
       )}
       {showResult && (
-        <MusicEnded 
-          albumImageUrl={data?.albumImageUrl || ""} 
+        <MusicEnded
+          albumImageUrl={data?.albumImageUrl || ""}
           musicName={data?.name || ""}
         />
       )}
@@ -168,10 +168,20 @@ function SingMusic() {
             // Pega as próximas 2 linhas da letra para mostrar como prévia
 
             const nextLines = lyrics.slice(i + 1, i + 3);
+            const nextLine = lyrics[i + 1];
+            const isCurrent = line.text === currentSubtitle;
+            const duration = nextLine ? nextLine.time - line.time : 1;
 
             return (
               <div key={line.time}>
-                <h1 className="highlighted">{line.text}</h1>
+                <h1
+                  className="highlighted"
+                  style={
+                    isCurrent ? { animationDuration: `${duration}s` } : undefined
+                  }
+                >
+                  {line.text}
+                </h1>
                 {/* Mostra as próximas 2 linhas */}
                 {nextLines.map((nextLine) => (
                   <p key={nextLine.time} className="faded">
