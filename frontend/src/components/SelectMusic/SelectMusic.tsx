@@ -17,6 +17,7 @@ const SelectMusic = () => {
     musicUrl: string;
     albumImageUrl: string;
     _id: string;
+    difficulty: string;
   };
 
   const [selectedMusic, setSelectedMusic] = useState<Music | null>(null);
@@ -56,6 +57,7 @@ const SelectMusic = () => {
           musicUrl={selectedMusic.musicUrl}
           _id={selectedMusic._id}
           albumImageUrl={selectedMusic.albumImageUrl}
+          difficulty={selectedMusic.difficulty}
         />
       )}
     </div>

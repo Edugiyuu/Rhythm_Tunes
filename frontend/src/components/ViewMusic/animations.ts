@@ -3,13 +3,20 @@ import { gsap } from "gsap";
 export const animations = () => {
 
   const triggerAnimation = () => {
-    gsap.to('.ViewMusic', {
-        y: "+=3",
+    gsap.fromTo(
+      ".ViewMusic", 
+      {
+        y: 0,
+      },
+      {
+        y: 3,
         duration: 0.8,
         repeat: -1,
         yoyo: true,
         ease: "power1.inOut",
-    });
+      }
+    );
+   
     gsap.fromTo(
       ".ViewMusic", 
       {

@@ -28,8 +28,8 @@
     color: black;
 }
 
-.ViewMusic img {
-    margin-bottom: 7%;
+#albumImageUrl {
+    margin-bottom: 5%;
     margin-left: 9%;
     border-radius: 5px;
     width: 30%;
@@ -71,6 +71,47 @@
     background-color: rgb(255, 255, 255) !important;
 }
 
+.difficulty {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    height: 10%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.hard,
+.easy,
+.medium {
+    font-weight: bold;
+    font-family: 'Rodin';
+    font-size: 1.8em;
+}
+
+.hard {
+    color: red !important;
+    text-shadow: rgba(0, 0, 0, 0.605) 3px 2px 0px;
+    letter-spacing: 4px;
+}
+
+.medium {
+    color: orange !important;
+    text-shadow: rgba(0, 0, 0, 0.701) 3px 2px 0px;
+    letter-spacing: px;
+}
+
+.easy {
+    color: #31e615 !important;
+    text-shadow: rgba(0, 0, 0, 0.529) 3px 2px 0px;
+    letter-spacing: 4px;
+}
+
+#hard,#medium, #easy {
+    font-size: 4em;
+    font-style: italic;
+}
+
 @media (max-width: 1124px) {
     .Infos {
         height: 80%;
@@ -79,7 +120,7 @@
         align-content: center;
     }
 
-    .ViewMusic img {
+    #albumImageUrl {
         max-height: 160px;
     }
 }
@@ -89,14 +130,14 @@
         display: none;
     }
 
-    .ViewMusic img {
+    #albumImageUrl {
         max-height: 160px;
     }
 
 }
 
 @media (max-height: 699px) {
-    .ViewMusic img {
+    #albumImageUrl {
         margin-bottom: 4%;
         margin-left: 9%;
         border-radius: 5px;

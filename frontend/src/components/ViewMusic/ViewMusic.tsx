@@ -11,9 +11,10 @@ type ViewMusicProps = {
     musicUrl: string;
     albumImageUrl: string;
     _id: string;
+    difficulty: string;
 };
 
-const ViewMusic = ({ name, musicUrl, _id, albumImageUrl}: ViewMusicProps) => {
+const ViewMusic = ({ name, musicUrl, _id, albumImageUrl, difficulty }: ViewMusicProps) => {
     const triggerAnimation = animations();
 
     useEffect(() => {
@@ -23,16 +24,22 @@ const ViewMusic = ({ name, musicUrl, _id, albumImageUrl}: ViewMusicProps) => {
     return (
         <div className="ViewMusic">
             <div className='Infos'>
-                <img src={albumImageUrl} alt="" />
+                <img id='albumImageUrl' src={albumImageUrl} />
                 <p>Music Name: {name}</p>
-                <p>Author: {}</p>
+                <div className='difficulty'>
+                    <p>Dificulty: </p>
+                    <h2 className={difficulty} id={difficulty}>{difficulty.toLocaleUpperCase().slice(0,1)}</h2>
+                    <p className={difficulty}>{difficulty.toLocaleUpperCase().slice(1)}</p>
+                    
+                </div>
+
                 <div className='StartMusicBox'>
                     <CustomLink to={`/sing-music/${_id}`} title='START!' className='StartMusic' />
                     <AudioPlayer
-                        autoPlay 
+                        autoPlay
                         src={musicUrl}
                         volume={0.3}
-                        style={{width: '100%', height:'100%'}}
+                        style={{ width: '100%', height: '100%' }}
                     />
                 </div>
             </div>
