@@ -160,7 +160,7 @@ function SingMusic() {
           musicName={data?.name || ""}
         />
       )}
-      {!showResult && (
+      {!selectMode &&  (
         <div className="lyrics">
           {lyrics.map((line, i) => {
             // Pula as letras que ainda não devem ser mostradas baseado no tempo atual

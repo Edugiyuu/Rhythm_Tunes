@@ -27,9 +27,9 @@ const ViewMusic = ({ name, musicUrl, _id, albumImageUrl, difficulty }: ViewMusic
                 <img id='albumImageUrl' src={albumImageUrl} />
                 <p>Music Name: {name}</p>
                 <div className='difficulty'>
-                    <p>Dificulty: </p>
+                    <p>Difficulty: </p>
                     <h2 className={difficulty} id={difficulty}>{difficulty.toLocaleUpperCase().slice(0,1)}</h2>
-                    <p className={difficulty}>{difficulty.toLocaleUpperCase().slice(1)}</p>
+                    <p id={`p${difficulty}`} className={difficulty}>{difficulty.toLocaleUpperCase().slice(1)}</p>
                     
                 </div>
 

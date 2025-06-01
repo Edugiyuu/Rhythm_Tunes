@@ -79,14 +79,16 @@
     height: 10%;
     margin: 0px;
     padding: 0px;
+    
 }
 
 .hard,
 .easy,
-.medium {
+.normal {
     font-weight: bold;
     font-family: 'Rodin';
     font-size: 1.8em;
+    opacity: 0;
 }
 
 .hard {
@@ -95,19 +97,20 @@
     letter-spacing: 4px;
 }
 
-.medium {
-    color: orange !important;
-    text-shadow: rgba(0, 0, 0, 0.701) 3px 2px 0px;
-    letter-spacing: px;
+.normal {
+    color: rgb(255, 200, 82) !important;
+    text-shadow: rgba(0, 0, 0, 0.529) 3px 2px 0px;
+    letter-spacing: 3px;
 }
 
 .easy {
     color: #31e615 !important;
     text-shadow: rgba(0, 0, 0, 0.529) 3px 2px 0px;
     letter-spacing: 4px;
+    
 }
 
-#hard,#medium, #easy {
+#hard,#normal, #easy {
     font-size: 4em;
     font-style: italic;
 }
