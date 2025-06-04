@@ -4,7 +4,7 @@ import "react-h5-audio-player/lib/styles.css";
 import "../SingMusic/SingMusic.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { triggerDialogAnimation, triggerBackDialogAnimation, TPDialogBack, triggerBackDialogAnimationMode, triggerDialogAnimationMode, triggerStar } from "./animations";
+import { triggerDialogAnimation, triggerBackDialogAnimation, TPDialogBack, triggerBackDialogAnimationMode, triggerDialogAnimationMode, triggerStar, CutInAnimation } from "./animations";
 import { PlayAudio } from "../../utils/PlayAudio";
 import MusicEnded from "../MusicEnded/MusicEnded";
 
@@ -30,6 +30,7 @@ function SingMusic() {
   const [selectMode, setSelectMode] = useState<boolean>(true);
   const [showResult, setShowResult] = useState<boolean>(false);
   const [audioUrl, setAudioUrl] = useState<string>("");
+  const [character, setCharacter] = useState('');
   const { id } = useParams();
 
   useEffect(() => {
@@ -72,7 +73,11 @@ function SingMusic() {
   }, [id]);
 
   useEffect(() => {
+
     if (currentSubtitle === "♪♪♪") {
+      const characters = ["Yosuke", "Chie"];
+      const character = characters[Math.floor(Math.random() * characters.length)];
+      setCharacter(character);
       triggerDialogAnimation();
       setRandomNumber(Math.floor(Math.random() * 2));
     } else {
@@ -80,6 +85,10 @@ function SingMusic() {
     }
     if (showResult) {
       triggerBackDialogAnimation();
+    }
+    if (currentSubtitle === "!!!") {
+      PlayAudio(`/audios/UI/P4Cut-In.wav`, 0.5);
+      CutInAnimation();
     }
   }, [currentSubtitle, showResult]);
 
@@ -160,7 +169,7 @@ function SingMusic() {
           musicName={data?.name || ""}
         />
       )}
-      {!selectMode &&  (
+      {!selectMode && (
         <div className="lyrics">
           {lyrics.map((line, i) => {
             // Pula as letras que ainda não devem ser mostradas baseado no tempo atual
@@ -201,8 +210,17 @@ function SingMusic() {
         <img src={`/imgs/Chie/ModeSelector/Chie-${pacienceLevel}.png`} />
       </div>
 
-      <div className="PersonaChar" id="RandomChie">
-        <img src={`/imgs/Chie/InMusic/Chie-${randomNumber}.png`} />
+      <div className="PersonaChar" id="RandomChar">
+        <img src={`/imgs/${character}/InMusic/${character}-${randomNumber}.png`} />
+      </div>
+
+      <div className="CutIn">
+
+        {/* <img src="/star.svg" className="cutin-effect" /> */}
+        <img src={`/imgs/CutIn/CutIn-1.png`} id="CutInChar" />
+        {/* <img src="/star.svg" className="cutin-effect" /> */}
+
+
       </div>
     </div>
   );
