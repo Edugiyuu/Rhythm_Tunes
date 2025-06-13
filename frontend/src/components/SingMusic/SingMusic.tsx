@@ -88,6 +88,7 @@ function SingMusic() {
     }
     if (currentSubtitle === "!!!") {
       PlayAudio(`/audios/UI/P4Cut-In.wav`, 0.5);
+      setRandomNumber(Math.floor(Math.random() * 5));
       CutInAnimation();
     }
   }, [currentSubtitle, showResult]);
@@ -217,9 +218,8 @@ function SingMusic() {
       <div className="CutIn">
 
         {/* <img src="/star.svg" className="cutin-effect" /> */}
-        <img src={`/imgs/CutIn/CutIn-1.png`} id="CutInChar" />
+        <img src={`/imgs/CutIn/CutIn-${randomNumber}.png`} id="CutInChar" />
         {/* <img src="/star.svg" className="cutin-effect" /> */}
-
 
       </div>
     </div>
