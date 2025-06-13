@@ -19,12 +19,11 @@ export const animations = () => {
                 stagger: 0.2,
                 scrollTrigger: {
                     trigger: ".SelectMusic",
-                    start: "top 50%",
+                    start: "top 60%",
                     end: "bottom bottom",
-                    scrub: 1.5,
+                    scrub: 1.8,
                 },
             }
         );
-        console.log("animação pronta");
         
 }

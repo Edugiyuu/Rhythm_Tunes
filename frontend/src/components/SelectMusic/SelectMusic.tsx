@@ -5,6 +5,7 @@ import "./SelectMusic.css";
 import { animations } from "./animations";
 import ViewMusic from "../ViewMusic/ViewMusic";
 import axios from "axios";
+import { PlayAudio } from "../../utils/PlayAudio";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,6 +17,7 @@ const SelectMusic = () => {
     musicUrl: string;
     albumImageUrl: string;
     _id: string;
+    difficulty: string;
   };
 
   const [selectedMusic, setSelectedMusic] = useState<Music | null>(null);
@@ -43,7 +45,7 @@ const SelectMusic = () => {
             <img src="/star.svg" alt="music icon" />
             <div>
               <p>{music.name}</p>
-              <button onClick={() => setSelectedMusic(music)}>VIEW MUSIC..</button>
+              <button onClick={() => { setSelectedMusic(music); PlayAudio('/audios/UI/P4Hover.wav',0.7); }}>VIEW MUSIC..</button>
             </div>
           </div>
         ))}
@@ -55,6 +57,7 @@ const SelectMusic = () => {
           musicUrl={selectedMusic.musicUrl}
           _id={selectedMusic._id}
           albumImageUrl={selectedMusic.albumImageUrl}
+          difficulty={selectedMusic.difficulty}
         />
       )}
     </div>

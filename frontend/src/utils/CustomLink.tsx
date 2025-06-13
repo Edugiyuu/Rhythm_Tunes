@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { MouseEvent, useEffect } from 'react';
 import { gsap } from 'gsap';
+import { PlayAudio } from './PlayAudio';
 
 const CustomLink = ({ to, title, className }: any) => {
     const navigate = useNavigate();
@@ -23,6 +24,7 @@ const CustomLink = ({ to, title, className }: any) => {
 
     const handleClick = (e: MouseEvent) => {
         e.preventDefault();
+        PlayAudio('/audios/UI/P4Select.wav',0.8);
         const screen = document.getElementById('transition');
         
         if (screen) {

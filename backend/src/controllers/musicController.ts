@@ -46,7 +46,8 @@ export const uploadMusic = async (req: Request, res: Response): Promise<any> => 
             instrumentalUrl: instrumentalResult.secure_url,    // URL segura do instrumental
             albumImageUrl: albumImageResult.secure_url,        // URL segura da imagem do álbum
             cloudinaryId: musicResult.public_id,              // ID para referência no Cloudinary
-            lyrics: JSON.parse(req.body.lyrics)
+            lyrics: JSON.parse(req.body.lyrics),
+            difficulty: JSON.parse(req.body.difficulty)
         });
         
         await newMusic.save();

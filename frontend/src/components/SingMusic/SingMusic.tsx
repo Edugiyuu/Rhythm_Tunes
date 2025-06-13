@@ -4,12 +4,15 @@ import "react-h5-audio-player/lib/styles.css";
 import "../SingMusic/SingMusic.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { triggerDialogAnimation, triggerBackDialogAnimation, TPDialogBack, triggerBackDialogAnimationMode, triggerDialogAnimationMode } from "./animations";
+import { triggerDialogAnimation, triggerBackDialogAnimation, TPDialogBack, triggerBackDialogAnimationMode, triggerDialogAnimationMode, triggerStar, CutInAnimation } from "./animations";
 import { PlayAudio } from "../../utils/PlayAudio";
+import MusicEnded from "../MusicEnded/MusicEnded";
 
 interface Music {
   musicUrl: string;
   instrumentalUrl: string;
+  albumImageUrl: string;
+  name: string;
 }
 
 interface Subtitle {
@@ -25,7 +28,9 @@ function SingMusic() {
   const [randomNumber, setRandomNumber] = useState<number>(0);
   const [pacienceLevel, setpacienceLevel] = useState<number>(0);
   const [selectMode, setSelectMode] = useState<boolean>(true);
+  const [showResult, setShowResult] = useState<boolean>(false);
   const [audioUrl, setAudioUrl] = useState<string>("");
+  const [character, setCharacter] = useState('');
   const { id } = useParams();
 
   useEffect(() => {
@@ -38,7 +43,7 @@ function SingMusic() {
       const timer1 = setTimeout(() => {
         console.log("Timer1 executado");
         setpacienceLevel(1);
-      }, 10000);
+      }, 20000);
 
       const timer2 = setTimeout(() => {
         console.log("Timer2 executado");
@@ -68,13 +73,25 @@ function SingMusic() {
   }, [id]);
 
   useEffect(() => {
+
     if (currentSubtitle === "♪♪♪") {
+      const characters = ["Yosuke", "Chie"];
+      const character = characters[Math.floor(Math.random() * characters.length)];
+      setCharacter(character);
       triggerDialogAnimation();
       setRandomNumber(Math.floor(Math.random() * 2));
     } else {
       triggerBackDialogAnimation();
     }
-  }, [currentSubtitle]);
+    if (showResult) {
+      triggerBackDialogAnimation();
+    }
+    if (currentSubtitle === "!!!") {
+      PlayAudio(`/audios/UI/P4Cut-In.wav`, 0.5);
+      setRandomNumber(Math.floor(Math.random() * 5));
+      CutInAnimation();
+    }
+  }, [currentSubtitle, showResult]);
 
   const handleTimeUpdate = () => {
     const audio = document.querySelector("audio");
@@ -118,11 +135,25 @@ function SingMusic() {
         layout="horizontal"
         autoPlay={true}
         volume={0.5}
+        onEnded={() => { setShowResult(true), triggerStar() }}
       />
+      <div className="stars">
+        <img src="/star.svg" className="star star1" />
+        <img src="/star.svg" className="star star2" />
+        <img src="/star.svg" className="star star3" />
+        <img src="/star.svg" className="star star4" />
+        <img src="/star.svg" className="star star5" />
+        <img src="/star.svg" className="star star6" />
+        <img src="/star.svg" className="star star7" />
+        <img src="/star.svg" className="star star8" />
+      </div>
+      <div className='starBox'>
+        <img src="/star.svg" id="starEnd" />
+      </div>
 
       {selectMode && (
         <div className="ModeSelector">
-          <h2>Chose your mode</h2>
+          <h2>Choose your mode</h2>
           <div className="ModeButtons">
             <button className="ModeButton" onClick={() => handleModeSelect(true)}>
               Sing together
@@ -133,38 +164,63 @@ function SingMusic() {
           </div>
         </div>
       )}
+      {showResult && (
+        <MusicEnded
+          albumImageUrl={data?.albumImageUrl || ""}
+          musicName={data?.name || ""}
+        />
+      )}
+      {!selectMode && (
+        <div className="lyrics">
+          {lyrics.map((line, i) => {
+            // Pula as letras que ainda não devem ser mostradas baseado no tempo atual
+            if (currentTime < line.time) return null;
+            // Pega as próximas 2 linhas da letra para mostrar como prévia
 
-      <div className="lyrics">
-        {lyrics.map((line, i) => {
-          // Pula as letras que ainda não devem ser mostradas baseado no tempo atual
-          if (currentTime < line.time) return null;
-          // Pega as próximas 2 linhas da letra para mostrar como prévia
+            const nextLines = lyrics.slice(i + 1, i + 3);
+            const nextLine = lyrics[i + 1];
+            const isCurrent = line.text === currentSubtitle;
+            const duration = nextLine ? nextLine.time - line.time : 1;
 
-          const nextLines = lyrics.slice(i + 1, i + 3);
+            return (
+              <div key={line.time}>
+                <h1
+                  className="highlighted"
+                  style={
+                    isCurrent ? { animationDuration: `${duration}s` } : undefined
+                  }
+                >
+                  {line.text}
+                </h1>
+                {/* Mostra as próximas 2 linhas */}
+                {nextLines.map((nextLine) => (
+                  <p key={nextLine.time} className="faded">
+                    {nextLine.text}
+                  </p>
+                ))}
+              </div>
+            );
+            // Inverte o array para mostrar a letra mais recente primeiro
+            // Encontra o primeiro elemento não-nulo (letra atual a ser mostrada)
+          }).reverse().find(Boolean)}
 
-          return (
-            <div key={line.time}>
-              <h1 className="highlighted">{line.text}</h1>
-              {/* Mostra as próximas 2 linhas */}
-              {nextLines.map((nextLine) => (
-                <p key={nextLine.time} className="faded">
-                  {nextLine.text}
-                </p>
-              ))}
-            </div>
-          );
-          // Inverte o array para mostrar a letra mais recente primeiro
-          // Encontra o primeiro elemento não-nulo (letra atual a ser mostrada)
-        }).reverse().find(Boolean)}
-
-      </div>
+        </div>
+      )}
 
       <div className="PersonaChar" id="ChieMode">
         <img src={`/imgs/Chie/ModeSelector/Chie-${pacienceLevel}.png`} />
       </div>
 
-      <div className="PersonaChar" id="RandomChie">
-        <img src={`/imgs/Chie/InMusic/Chie-${randomNumber}.png`} />
+      <div className="PersonaChar" id="RandomChar">
+        <img src={`/imgs/${character}/InMusic/${character}-${randomNumber}.png`} />
+      </div>
+
+      <div className="CutIn">
+
+        {/* <img src="/star.svg" className="cutin-effect" /> */}
+        <img src={`/imgs/CutIn/CutIn-${randomNumber}.png`} id="CutInChar" />
+        {/* <img src="/star.svg" className="cutin-effect" /> */}
+
       </div>
     </div>
   );

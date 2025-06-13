@@ -12,6 +12,7 @@ interface IMusic extends Document {
     instrumentalUrl: string;
     cloudinaryId: string;
     lyrics:Lyrics[];
+    difficulty:string;
 }
 
 const musicSchema = new Schema({
@@ -25,7 +26,8 @@ const musicSchema = new Schema({
         _id: false,
         time: { type: Number, required: true },
         text: { type: String, required: true }
-      }]
+      }],
+    difficulty: { type: String, required: true },
 });
 
 

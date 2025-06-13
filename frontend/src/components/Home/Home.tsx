@@ -1,7 +1,7 @@
 import './Home.css';
 import CustomLink from '../../utils/CustomLink';
 import { animations } from './animations';
-
+/* import TV from '../3dModel/3dModel'; */
 const Home = () => {
    animations();
 
