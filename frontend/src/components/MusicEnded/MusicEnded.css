@@ -54,8 +54,6 @@
 .wip {
     font-weight: bold;
     font-family: 'Rodin';
-    
-
     color: rgb(250, 224, 59) !important;
     text-shadow: rgba(0, 0, 0, 0.605) 3px 2px 0px;
     letter-spacing: 8px;
@@ -65,4 +63,28 @@
 #wip {
     font-size: 4.5em;
     font-style: italic;
+}
+.Return{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 1.5rem;
+    background-color: rgb(210, 210, 210);
+    width: 30%;
+    border-radius: 8px;
+    
+}
+.Return:hover {
+    display: flex;
+    transition: all 0.1s ease-in-out;
+    justify-content: center;
+    text-decoration: none;
+    color: rgb(0, 116, 241);
+    font-size: 1.5rem;
+    background-color: rgb(246, 246, 246);
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 10px 10px 0px -5px
+    
 }

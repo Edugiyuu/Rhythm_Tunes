@@ -76,6 +76,8 @@
     flex-direction: column;
     align-items: end;
     justify-content: center;
+    pointer-events: none; 
+    user-select: none;
 }
 
 .PersonaChar img {
@@ -234,7 +236,6 @@
     height: 200px;
     background-color: rgba(0, 0, 0, 0.801);
 }
-
 
 /* .SingMusic .rhap_main-controls-button.rhap_play-pause-button {
   display: none;
