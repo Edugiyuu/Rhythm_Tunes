@@ -1,40 +1,68 @@
 .MusicEnded {
+    display: flex;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 100%;
+    margin-top: 1%;
+}
+.MusicEnded h2 {
+    color: rgb(0, 0, 0);
+    font-size: 2.5rem;
+}
+.MusicEnded p {
+    color: rgb(0, 0, 0);
+    font-size: 2rem;
+    
+}
+.Result {
+    position:block;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    width: 50%;
-    padding: 2rem;
-    border-radius: 20px;
+    justify-content: center;
+    align-content: start;
+    width: 70%;
+    height: 80vh;
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
     background-color: white;
-    z-index: 10;
+    gap: 30px;
+
+}
+
+.MusicEnded img {
+    width: 30%;
+    height: 30%;
+    border-radius: 5px;
+    z-index: 1;
+    margin-left: 5%;
+    margin-top: 3%;
+    box-shadow: rgba(0, 0, 0, 0.2) 40px 10px 15px -5px, rgba(0, 0, 0, 0.22) 0px 6px 6px -6px;
+}
+
+
+.Score {
+    color: #000;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    height: 10%;
+    margin: 0px;
+    padding: 0px;
     
 }
 
-.MusicEnded h2 {
-    color: rgb(0, 0, 0);
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
+.wip {
+    font-weight: bold;
+    font-family: 'Rodin';
+    
+
+    color: rgb(250, 224, 59) !important;
+    text-shadow: rgba(0, 0, 0, 0.605) 3px 2px 0px;
+    letter-spacing: 8px;
 }
 
-.Result{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 2rem;
-    border-radius: 8px;
-    background-color: rgb(255, 255, 255);
-}
 
-.Result img{
-    width: 40%;
-    height: 100%;
-    border-radius: 5px;
-    rotate: 2deg;
+#wip {
+    font-size: 4.5em;
+    font-style: italic;
 }
