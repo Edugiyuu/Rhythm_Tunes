@@ -4,7 +4,7 @@ import "react-h5-audio-player/lib/styles.css";
 import "../SingMusic/SingMusic.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { triggerDialogAnimation, triggerBackDialogAnimation, TPDialogBack, triggerBackDialogAnimationMode, triggerDialogAnimationMode, triggerStar, CutInAnimation } from "./animations";
+import { triggerDialogAnimation, triggerBackDialogAnimation, TPDialogBack, triggerBackDialogAnimationMode, triggerDialogAnimationMode, CutInAnimation } from "./animations";
 import { PlayAudio } from "../../utils/PlayAudio";
 import MusicEnded from "../MusicEnded/MusicEnded";
 
@@ -29,6 +29,7 @@ function SingMusic() {
   const [pacienceLevel, setpacienceLevel] = useState<number>(0);
   const [selectMode, setSelectMode] = useState<boolean>(true);
   const [showResult, setShowResult] = useState<boolean>(false);
+  const [showLyrics, setShowLyrics] = useState(true);
   const [audioUrl, setAudioUrl] = useState<string>("");
   const [character, setCharacter] = useState('');
   const { id } = useParams();
@@ -135,7 +136,7 @@ function SingMusic() {
         layout="horizontal"
         autoPlay={true}
         volume={0.5}
-        onEnded={() => { setShowResult(true), triggerStar() }}
+        onEnded={() => { setShowResult(true); setShowLyrics(false);}}
       />
       <div className="stars">
         <img src="/star.svg" className="star star1" />
@@ -146,9 +147,6 @@ function SingMusic() {
         <img src="/star.svg" className="star star6" />
         <img src="/star.svg" className="star star7" />
         <img src="/star.svg" className="star star8" />
-      </div>
-      <div className='starBox'>
-        <img src="/star.svg" id="starEnd" />
       </div>
 
       {selectMode && (
@@ -171,7 +169,7 @@ function SingMusic() {
         />
       )}
       {!selectMode && (
-        <div className="lyrics">
+        <div className="lyrics" style={{ display: showLyrics ? 'flex' : 'none' }}>
           {lyrics.map((line, i) => {
             // Pula as letras que ainda não devem ser mostradas baseado no tempo atual
             if (currentTime < line.time) return null;
@@ -216,11 +214,7 @@ function SingMusic() {
       </div>
 
       <div className="CutIn">
-
-        {/* <img src="/star.svg" className="cutin-effect" /> */}
         <img src={`/imgs/CutIn/CutIn-${randomNumber}.png`} id="CutInChar" />
-        {/* <img src="/star.svg" className="cutin-effect" /> */}
-
       </div>
     </div>
   );

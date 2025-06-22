@@ -63,6 +63,7 @@ export const triggerBackDialogAnimationMode = () => {
       duration: 2,
       opacity: 0,
       ease: "expo.inOut",
+      
     },
   );
 };
