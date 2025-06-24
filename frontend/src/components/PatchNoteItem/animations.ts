@@ -8,7 +8,7 @@ export const triggerH2Animation = () => {
         yoyo: true
     });
     gsap.to(".PatchNoteItem li", {
-        duration: 1,
+        duration: 0.8,
         color: "rgb(17, 100, 255)",
         repeat: -1,
         yoyo: true

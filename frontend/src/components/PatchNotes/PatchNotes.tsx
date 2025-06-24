@@ -6,7 +6,7 @@ import CustomLink from "../../utils/CustomLink";
 function PatchNotes() {
     const [characterChosed, setCharacterChosed] = useState("");
 
-    const characters = ["Yuki","Mitsuru","Fuuka","Junpei","Aigis","Yukari"];
+    const characters = ["Yuki","Mitsuru","Fuuka","Junpei","Aigis","Yukari","Akihiko","Koromaru"];
     useEffect(() => {
         const character = characters[Math.floor(Math.random() * characters.length)];
         setCharacterChosed(character);

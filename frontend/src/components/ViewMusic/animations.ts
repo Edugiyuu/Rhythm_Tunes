@@ -85,5 +85,13 @@ export const animations = () => {
       }
     );
   };
+  gsap.to(".StartMusic", {
+        duration: 0.7,
+
+        color: "rgb(104, 188, 224)",
+        repeat: -1,
+        yoyo: true
+    });
+    
   return triggerAnimation;
 };
