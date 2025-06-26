@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
 import SelectMusic from "./components/SelectMusic/SelectMusic";
 import SingMusic from "./components/SingMusic/SingMusic";
+import PatchNotes from "./components/PatchNotes/PatchNotes";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/musics" element={<SelectMusic />} />
           <Route path="/sing-music/:id" element={<SingMusic />} />
+          <Route path="/patch-notes" element={<PatchNotes />} />
         </Routes>
       )}
     </BrowserRouter>

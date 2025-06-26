@@ -197,13 +197,13 @@
     padding: 10px 20px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
-    clip-path: polygon(10% 0, 100% 0%, 90% 100%, 0% 100%);
+    border: 2px solid rgb(140, 140, 140);
+    border-radius: 5px;
+
 }
 
 .ModeButton:hover {
     color: #1198ff;
-    clip-path: polygon(20% 0, 100% 0%, 80% 100%, 0% 100%);
     transform: scale(1.05);
 }
 
