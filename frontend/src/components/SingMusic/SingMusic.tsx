@@ -46,17 +46,9 @@ function SingMusic() {
         setpacienceLevel(1);
       }, 20000);
 
-      const timer2 = setTimeout(() => {
-        console.log("Timer2 executado");
-        setpacienceLevel(2);
-      }, 40000);
-
       return () => {
         clearTimeout(timer1);
-        clearTimeout(timer2);
       }
-    } else {
-      setpacienceLevel(0);
     }
   }, [selectMode]);
 
@@ -135,7 +127,7 @@ function SingMusic() {
         customVolumeControls={[]}
         layout="horizontal"
         autoPlay={true}
-        volume={0.5}
+        volume={0.6}
         onEnded={() => { setShowResult(true); setShowLyrics(false);}}
       />
       <div className="stars">

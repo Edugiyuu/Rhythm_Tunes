@@ -1,14 +1,14 @@
 import './Home.css';
 import CustomLink from '../../utils/CustomLink';
-import { animations } from './animations';
+import { animations, LogoAnimation } from './animations';
 /* import TV from '../3dModel/3dModel'; */
 const Home = () => {
    animations();
+   LogoAnimation();
 
     return (
         <div className='Home'>
             <img src="/imgs/Logos/PersonaTunes.svg" className='Icon' />
-
             <div className="stars">
                 <img src="/star.svg" className="star star1" />
                 <img src="/star.svg" className="star star2" />

@@ -29,3 +29,38 @@ export const animations = () => {
     );
   }, [])
 }
+
+export const LogoAnimation = () => {
+  useEffect(() => {
+    // Animação de batida de coração
+    gsap.set('.Icon', { scale: 1, filter: 'drop-shadow(0 0 0px transparent)' });
+    const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.1 });
+    tl.to('.Icon', {
+      scale: 1.18,
+      duration: 0.18,
+      ease: 'power1.in',
+      filter: 'drop-shadow(25px 0 0px rgb(255, 255, 255))'
+    })
+    .to('.Icon', {
+      scale: 0.98,
+      duration: 0.20,
+      ease: 'power1.out',
+      filter: 'drop-shadow(-25px 0 0px transparent)'
+    })
+    .to('.Icon', {
+      scale: 1.12,
+      duration: 0.13,
+      ease: 'power1.in',
+      filter: 'drop-shadow(25px 0 0px #1a9ef6)'
+    })
+    .to('.Icon', {
+      scale: 1,
+      duration: 0.25,
+      ease: 'power1.out',
+      filter: 'drop-shadow(-25px 0 0px transparent)'
+    })
+    .to('.Icon', {
+      duration: 0.2
+    }); // Pausa entre batidas
+  }, [])
+}
