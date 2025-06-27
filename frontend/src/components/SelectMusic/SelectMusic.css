@@ -25,6 +25,7 @@
 .Music p {
   font-size: 25px;
 }
+
 .Music button {
   font-family: "Nunito", sans-serif;
   font-size: 20px;
@@ -47,15 +48,42 @@
 }
 
 .Music img {
- height: 150px;
- width: 150px;
-/*  border: 1px solid white; */
- border-radius: 10px;
+  height: 150px;
+  width: 150px;
+  /*  border: 1px solid white; */
+  border-radius: 10px;
 }
 
-.AllMusics{
+.AllMusics {
   display: flex;
   flex-direction: column;
   width: 50%;
   height: 100%;
+}
+
+@media (max-width: 668px) {
+  .Music button {
+    font-size: 15px;
+    font-style: italic;
+    border-radius: 0px;
+    padding: 5px 15px;
+    clip-path: polygon(10% 0, 100% 0%, 90% 100%, 0% 100%);
+  }
+
+  .Music img {
+    height: 130px;
+    width: 120px;
+  }
+  .Music p {
+  font-size: 20px;
+}
+
+  .AllMusics {
+  width: 100%;
+}
+.SelectMusic {
+
+  padding-bottom: 85%;
+
+}
 }
