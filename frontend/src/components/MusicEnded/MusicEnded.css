@@ -4,17 +4,20 @@
     width: 100%;
     margin-top: 1%;
 }
+
 .MusicEnded h2 {
     color: rgb(0, 0, 0);
     font-size: 2.5rem;
 }
+
 .MusicEnded p {
     color: rgb(0, 0, 0);
     font-size: 2rem;
-    
+
 }
+
 .Result {
-    position:block;
+    position: block;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,7 +51,7 @@
     height: 10%;
     margin: 0px;
     padding: 0px;
-    
+
 }
 
 .wip {
@@ -64,7 +67,8 @@
     font-size: 4.5em;
     font-style: italic;
 }
-.Return{
+
+.Return {
     display: flex;
     justify-content: center;
     text-decoration: none;
@@ -73,8 +77,9 @@
     background-color: rgb(210, 210, 210);
     width: 30%;
     border-radius: 8px;
-    
+
 }
+
 .Return:hover {
     display: flex;
     transition: all 0.1s ease-in-out;
@@ -86,5 +91,36 @@
     width: 30%;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.2) 10px 10px 0px -5px
-    
+}
+
+@media (max-width: 668px) {
+    .Result {
+        width: 100%;
+        height: 60vh;
+        clip-path: none;
+        align-items: top;
+        justify-content: start;
+        flex-direction: column;
+        gap: 50px;
+        padding: 20px;
+    }
+
+    .MusicEnded {
+        flex-direction: column;
+    }
+
+    .MusicEnded h2 { 
+        font-size: 2rem;
+    }
+    .MusicEnded p { 
+        font-size: 1.8rem;
+    }
+
+    .MusicEnded img {
+        width: 80%;
+        height: 80%;
+        border-radius: 5px;
+        margin-left: 10%;
+        margin-top: 4%;
+    }
 }

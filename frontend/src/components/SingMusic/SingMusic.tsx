@@ -127,7 +127,7 @@ function SingMusic() {
         customVolumeControls={[]}
         layout="horizontal"
         autoPlay={true}
-        volume={0.6}
+        volume={0.8}
         onEnded={() => { setShowResult(true); setShowLyrics(false);}}
       />
       <div className="stars">
