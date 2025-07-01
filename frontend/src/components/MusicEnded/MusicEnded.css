@@ -101,7 +101,7 @@
         align-items: top;
         justify-content: start;
         flex-direction: column;
-        gap: 50px;
+        gap: 40px;
         padding: 20px;
     }
 
@@ -109,11 +109,26 @@
         flex-direction: column;
     }
 
-    .MusicEnded h2 { 
-        font-size: 2rem;
+    .MusicEnded h2 {
+        font-size: 1.6rem;
     }
-    .MusicEnded p { 
-        font-size: 1.8rem;
+
+    .MusicEnded p {
+        font-size: 1.3rem;
+    }
+
+    .wip {
+        font-weight: bold;
+        font-family: 'Rodin';
+        color: rgb(250, 224, 59) !important;
+        text-shadow: rgba(0, 0, 0, 0.605) 3px 2px 0px;
+        letter-spacing: 8px;
+    }
+
+
+    #wip {
+        font-size: 3.4em;
+        font-style: italic;
     }
 
     .MusicEnded img {
@@ -122,5 +137,13 @@
         border-radius: 5px;
         margin-left: 10%;
         margin-top: 4%;
+    }
+
+    .Return {
+        width: 100%;
+    }
+
+    .Return:hover {
+        width: 90%;
     }
 }

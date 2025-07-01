@@ -127,7 +127,7 @@
 
 @media (max-width: 568px) {
     .Link {
-        font-size: 19px;
+        font-size: 18px;
         margin: 5px;
         width: 45vw;
         height: 12vh;
@@ -142,6 +142,11 @@
         margin-left: 70px;
         margin-top: 15%;
         height: 280px;
-        width: 280px;
+        width: 240px;
+    }
+
+    .star,.star1,.star2,.star3,.star4,.star5,.star6,.star7,.star8 {
+        width: 20px;
+
     }
 }

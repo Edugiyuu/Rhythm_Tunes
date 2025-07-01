@@ -134,6 +134,7 @@
     }
 
     .ViewMusic {
+        z-index: 0;
         width: 105%;
         height: 55%;
         margin: 0px;

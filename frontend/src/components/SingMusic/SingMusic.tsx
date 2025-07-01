@@ -42,7 +42,6 @@ function SingMusic() {
   useEffect(() => {
     if (selectMode) {
       const timer1 = setTimeout(() => {
-        console.log("Timer1 executado");
         setpacienceLevel(1);
       }, 20000);
 
