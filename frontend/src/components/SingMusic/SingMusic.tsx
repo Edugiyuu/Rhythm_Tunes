@@ -54,7 +54,7 @@ function SingMusic() {
 
   useEffect(() => {
     TPDialogBack();
-    axios.get(`http://localhost:3000/music/${id}`)
+    axios.get(`${import.meta.env.VITE_API_URL}/music/${id}`)
       .then((res) => {
         setData(res.data);
         setLyrics(res.data.lyrics);

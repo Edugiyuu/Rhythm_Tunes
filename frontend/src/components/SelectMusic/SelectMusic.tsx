@@ -26,7 +26,7 @@ const SelectMusic = () => {
 
   useEffect(() => {
 
-		axios.get(`http://localhost:3000/musics`)
+		axios.get(`${import.meta.env.VITE_API_URL}/musics`)
 			.then((res) => {
         animations();
 				console.log(res.data);
