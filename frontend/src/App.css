@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Rodin';
-  src: url('../public/fonts/FOT-Rodin\ Pro\ EB.otf') format('truetype');
+  src: url('/Persona_Tunes/fonts/FOT-Rodin\ Pro\ EB.otf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

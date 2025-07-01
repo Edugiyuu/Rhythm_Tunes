@@ -35,7 +35,7 @@ function SingMusic() {
   const { id } = useParams();
 
   useEffect(() => {
-    PlayAudio(`/audios/Chie/ModeSelector/Chie-${pacienceLevel}.mp3`);
+    PlayAudio(`${import.meta.env.BASE_URL}/audios/Chie/ModeSelector/Chie-${pacienceLevel}.mp3`);
     triggerDialogAnimationMode();
   }, [pacienceLevel]);
 
@@ -80,7 +80,7 @@ function SingMusic() {
       triggerBackDialogAnimation();
     }
     if (currentSubtitle === "!!!") {
-      PlayAudio(`/audios/UI/P4Cut-In.wav`, 0.5);
+      PlayAudio(`${import.meta.env.BASE_URL}/audios/UI/P4Cut-In.wav`, 0.5);
       setRandomNumber(Math.floor(Math.random() * 5));
       CutInAnimation();
     }
@@ -131,14 +131,14 @@ function SingMusic() {
         onEnded={() => { setShowResult(true); setShowLyrics(false);}}
       />
       <div className="stars">
-        <img src="/star.svg" className="star star1" />
-        <img src="/star.svg" className="star star2" />
-        <img src="/star.svg" className="star star3" />
-        <img src="/star.svg" className="star star4" />
-        <img src="/star.svg" className="star star5" />
-        <img src="/star.svg" className="star star6" />
-        <img src="/star.svg" className="star star7" />
-        <img src="/star.svg" className="star star8" />
+        <img src={`${import.meta.env.BASE_URL}/star.svg`} className="star star1" />
+        <img src={`${import.meta.env.BASE_URL}/star.svg`} className="star star2" />
+        <img src={`${import.meta.env.BASE_URL}/star.svg`} className="star star3" />
+        <img src={`${import.meta.env.BASE_URL}/star.svg`} className="star star4" />
+        <img src={`${import.meta.env.BASE_URL}/star.svg`} className="star star5" />
+        <img src={`${import.meta.env.BASE_URL}/star.svg`} className="star star6" />
+        <img src={`${import.meta.env.BASE_URL}/star.svg`} className="star star7" />
+        <img src={`${import.meta.env.BASE_URL}/star.svg`} className="star star8" />
       </div>
 
       {selectMode && (
@@ -198,15 +198,15 @@ function SingMusic() {
       )}
 
       <div className="PersonaChar" id="ChieMode">
-        <img src={`/imgs/Chie/ModeSelector/Chie-${pacienceLevel}.png`} />
+        <img src={`${import.meta.env.BASE_URL}/imgs/Chie/ModeSelector/Chie-${pacienceLevel}.png`} />
       </div>
 
       <div className="PersonaChar" id="RandomChar">
-        <img src={`/imgs/${character}/InMusic/${character}-${randomNumber}.png`} />
+        <img src={`${import.meta.env.BASE_URL}/imgs/${character}/InMusic/${character}-${randomNumber}.png`} />
       </div>
 
       <div className="CutIn">
-        <img src={`/imgs/CutIn/CutIn-${randomNumber}.png`} id="CutInChar" />
+        <img src={`${import.meta.env.BASE_URL}/imgs/CutIn/CutIn-${randomNumber}.png`} id="CutInChar" />
       </div>
     </div>
   );

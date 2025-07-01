@@ -8,16 +8,17 @@ const Home = () => {
 
     return (
         <div className='Home'>
-            <img src="/imgs/Logos/PersonaTunes.svg" className='Icon' />
+            <img src={`${import.meta.env.BASE_URL}imgs/Logos/PersonaTunes.svg`} className='Icon'/>
+
             <div className="stars">
-                <img src="/star.svg" className="star star1" />
-                <img src="/star.svg" className="star star2" />
-                <img src="/star.svg" className="star star3" />
-                <img src="/star.svg" className="star star4" />
-                <img src="/star.svg" className="star star5" />
-                <img src="/star.svg" className="star star6" />
-                <img src="/star.svg" className="star star7" />
-                <img src="/star.svg" className="star star8" />
+                <img src={`${import.meta.env.BASE_URL}/star.svg`} className="star star1" />
+                <img src={`${import.meta.env.BASE_URL}/star.svg`} className="star star2" />
+                <img src={`${import.meta.env.BASE_URL}/star.svg`} className="star star3" />
+                <img src={`${import.meta.env.BASE_URL}/star.svg`} className="star star4" />
+                <img src={`${import.meta.env.BASE_URL}/star.svg`} className="star star5" />
+                <img src={`${import.meta.env.BASE_URL}/star.svg`} className="star star6" />
+                <img src={`${import.meta.env.BASE_URL}/star.svg`} className="star star7" />
+                <img src={`${import.meta.env.BASE_URL}/star.svg`} className="star star8" />
                 {/* <img src="/purpleStar.svg" className="purpleStar" />
                 <img src="/purpleStar.svg" className="purpleStar" /> */}
             </div>

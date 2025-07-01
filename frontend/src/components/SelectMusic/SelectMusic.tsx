@@ -42,10 +42,10 @@ const SelectMusic = () => {
       <div className="AllMusics">
         {musics.map((music) => (
           <div className="Music">
-            <img src="/star.svg" alt="music icon" />
+            <img src={`${import.meta.env.BASE_URL}/star.svg`} alt="music icon" />
             <div>
               <p>{music.name}</p>
-              <button onClick={() => { setSelectedMusic(music); PlayAudio('/audios/UI/P4Hover.wav',0.7); }}>VIEW MUSIC..</button>
+              <button onClick={() => { setSelectedMusic(music); PlayAudio(`${import.meta.env.BASE_URL}/audios/UI/P4Hover.wav`,0.7); }}>VIEW MUSIC..</button>
             </div>
           </div>
         ))}

@@ -21,7 +21,7 @@ function PatchNotes() {
             </div>
 
             <CustomLink to="/" title="Go back" className="Link PatchNotesGoBack"/>
-            <img src={`/imgs/${characterChosed}/PatchNotes/${characterChosed}0.png`} />
+            <img src={`${import.meta.env.BASE_URL}/imgs/${characterChosed}/PatchNotes/${characterChosed}0.png`} />
         </div>
     )
 }

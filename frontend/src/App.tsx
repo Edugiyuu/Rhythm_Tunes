@@ -16,9 +16,8 @@ function App() {
       setLoading(false);
     }, 1000);
   }, []);
-
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       {loading ? (
         <LoadingScreen />
       ) : (

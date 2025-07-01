@@ -24,7 +24,7 @@ const CustomLink = ({ to, title, className }: any) => {
 
     const handleClick = (e: MouseEvent) => {
         e.preventDefault();
-        PlayAudio('/audios/UI/P4Select.wav',0.8);
+        PlayAudio(`${import.meta.env.BASE_URL}/audios/UI/P4Select.wav`,0.8);
         const screen = document.getElementById('transition');
         
         if (screen) {
