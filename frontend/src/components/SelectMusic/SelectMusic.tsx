@@ -26,16 +26,17 @@ const SelectMusic = () => {
 
   useEffect(() => {
 
-		axios.get(`${import.meta.env.VITE_API_URL}/musics`)
-			.then((res) => {
-        animations();
-				console.log(res.data);
-				setMusics(res.data);
-			})
-			.catch((err) => {
-				console.error(err);
-			});
-	}, []);
+    axios.get(`${import.meta.env.VITE_API_URL}/musics`)
+      .then((res) => {
+        setTimeout(() => {
+          animations();
+        }, 2000);
+        setMusics(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   return (
     <div className="SelectMusic">
@@ -45,7 +46,7 @@ const SelectMusic = () => {
             <img src={`${import.meta.env.BASE_URL}/star.svg`} alt="music icon" />
             <div>
               <p>{music.name}</p>
-              <button onClick={() => { setSelectedMusic(music); PlayAudio(`${import.meta.env.BASE_URL}/audios/UI/P4Hover.wav`,0.7); }}>VIEW MUSIC..</button>
+              <button onClick={() => { setSelectedMusic(music); PlayAudio(`${import.meta.env.BASE_URL}/audios/UI/P4Hover.wav`, 0.7); }}>VIEW MUSIC..</button>
             </div>
           </div>
         ))}

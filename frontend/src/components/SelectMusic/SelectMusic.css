@@ -71,8 +71,8 @@
   }
 
   .Music img {
-    height: 130px;
-    width: 120px;
+    height: 120px;
+    width: 110px;
   }
   .Music p {
   font-size: 20px;
@@ -83,7 +83,7 @@
 }
 .SelectMusic {
 
-  padding-bottom: 85%;
+  padding-bottom: 100%;
 
 }
 }

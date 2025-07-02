@@ -42,7 +42,6 @@ function SingMusic() {
   useEffect(() => {
     if (selectMode) {
       const timer1 = setTimeout(() => {
-        console.log("Timer1 executado");
         setpacienceLevel(1);
       }, 20000);
 
@@ -119,17 +118,20 @@ function SingMusic() {
 
   return (
     <div className="SingMusic">
-      <AudioPlayer
-        src={audioUrl}
-        onListen={handleTimeUpdate}
-        showSkipControls={false}
-        showJumpControls={false}
-        customVolumeControls={[]}
-        layout="horizontal"
-        autoPlay={true}
-        volume={0.8}
-        onEnded={() => { setShowResult(true); setShowLyrics(false);}}
-      />
+      {audioUrl && (
+        <AudioPlayer
+          src={audioUrl}
+          onListen={handleTimeUpdate}
+          showSkipControls={false}
+          showJumpControls={false}
+          customVolumeControls={[]}
+          layout="horizontal"
+          autoPlay={true}
+          volume={0.8}
+          onEnded={() => { setShowResult(true); setShowLyrics(false); }}
+        />
+      )}
+
       <div className="stars">
         <img src={`${import.meta.env.BASE_URL}/star.svg`} className="star star1" />
         <img src={`${import.meta.env.BASE_URL}/star.svg`} className="star star2" />
