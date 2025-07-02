@@ -87,21 +87,8 @@
     margin: 0px;
 }
 
-
-.ModeSelector {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    padding: 2rem;
-    border-radius: 8px;
-    z-index: 10;
-    background-color: rgb(255, 255, 255);
+#ChieMode img {
+    margin-right: 45%;
 }
 
 .starBox {
@@ -129,41 +116,6 @@
     width: 80px;
     pointer-events: none;
     user-select: none;
-}
-
-
-.ModeSelector h2 {
-    color: rgb(0, 0, 0);
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-}
-
-.ModeButtons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-}
-
-.ModeButton {
-    width: 70%;
-    font-size: 20px;
-    background: white;
-    color: #118eed;
-    font-style: italic;
-    font-family: "Rodin";
-    border: none;
-
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    border: 2px solid #118eed;
-    border-radius: 5px;
-
-}
-
-.ModeButton:hover {
-    color: #1198ff;
-    transform: scale(1.05);
 }
 
 .CutIn {
@@ -239,22 +191,6 @@
 
     .faded {
         font-size: 16px;
-    }
-
-    .ModeSelector {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 90%;
-        padding: 2rem;
-        border-radius: 8px;
-        z-index: 10;
-        background-color: rgb(255, 255, 255);
     }
 
     #CutInChar {

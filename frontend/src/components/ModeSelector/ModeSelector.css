@@ -1,0 +1,153 @@
+.ModeSelector {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    border-radius: 8px;
+    z-index: 10;
+}
+
+.ModeSelectorHeader {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100vw;
+    top: 0px;
+    align-content: start;
+}
+
+.ModeSelectorHeader img {
+    width: 31vw;
+    height: 100%;
+    z-index: 20;
+}
+
+.ModeSelectorTitle {
+    position: fixed;
+
+    font-size: 65px;
+    color: rgb(230, 230, 230);
+    rotate: 9deg;
+    width: 105%;
+    height: 50%;
+    margin-top: 6%;
+    margin-left: 0%;
+}
+
+.ModeSelectorTitle h2 {
+    display: flex;
+    justify-content: center;
+    width: 105%;
+    background-color: white;
+   
+}
+
+.ModeButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 1rem;
+    width: 50%;
+    margin-left: 50%;
+    margin-top: 25%;
+    z-index: 1;
+}
+
+.ModeButton {
+    width: 80%;
+    font-size: 35px;
+    background: white;
+    color: #118eed;
+    font-style: italic;
+    font-family: "Rodin";
+    border: none;
+
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid #1198ff;
+    box-shadow: -20px 20px 0px rgba(0, 0, 0, 0.293);
+}
+
+@media (max-width: 1260px) {
+
+    .ModeSelectorTitle {
+        position: fixed;
+        font-size: 50px;
+    }
+
+}
+@media (max-width: 1060px) {
+
+    .ModeSelectorTitle {
+        position: fixed;
+        font-size: 40px;
+    }
+
+}
+
+@media (max-width: 568px) {
+
+    .ModeSelectorHeader img {
+        width: 31vh;
+        height: 100%;
+        z-index: 20;
+    }
+
+    .ModeSelectorTitle {
+        position: fixed;
+
+        font-size: 15px;
+        rotate: 10deg;
+        width: 100vw;
+        height: 13%;
+        margin-top: 10%;
+        margin-left: 5%;
+    }
+
+    .ModeSelectorTitle h2 {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        width: 120%;
+    }
+
+
+    .ModeButtons {
+        gap: 1.5rem;
+        width: 80%;
+        margin-left: 20%;
+        margin-top: 50%;
+        z-index: 1;
+    }
+
+    .ModeButton {
+        width: 100%;
+        font-size: 23px;
+         box-shadow: -10px 15px 0px;
+    }
+
+}
+
+
+@media (max-width: 360px) {
+
+    .ModeSelectorTitle {
+        position: fixed;
+        font-size: 14px;
+    }
+
+}
+
+@media (max-width: 320px) {
+
+    .ModeSelectorTitle {
+        position: fixed;
+        font-size: 12px;
+    }
+
+}

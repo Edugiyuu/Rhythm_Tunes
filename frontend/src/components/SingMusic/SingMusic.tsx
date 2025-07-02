@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ModeSelector from "../ModeSelector/ModeSelector";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import "../SingMusic/SingMusic.css";
@@ -144,17 +145,7 @@ function SingMusic() {
       </div>
 
       {selectMode && (
-        <div className="ModeSelector">
-          <h2>Choose your mode</h2>
-          <div className="ModeButtons">
-            <button className="ModeButton" onClick={() => handleModeSelect(true)}>
-              Sing together
-            </button>
-            <button className="ModeButton" onClick={() => handleModeSelect(false)}>
-              Karaoke
-            </button>
-          </div>
-        </div>
+        <ModeSelector handleModeSelect={handleModeSelect} />
       )}
       {showResult && (
         <MusicEnded
@@ -199,9 +190,7 @@ function SingMusic() {
         </div>
       )}
 
-      <div className="PersonaChar" id="ChieMode">
-        <img src={`${import.meta.env.BASE_URL}/imgs/Chie/ModeSelector/Chie-${pacienceLevel}.png`} />
-      </div>
+      
 
       <div className="PersonaChar" id="RandomChar">
         <img src={`${import.meta.env.BASE_URL}/imgs/${character}/InMusic/${character}-${randomNumber}.png`} />
