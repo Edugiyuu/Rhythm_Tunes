@@ -1,7 +1,6 @@
 import './Home.css';
 import CustomLink from '../../utils/CustomLink';
 import { animations, LogoAnimation } from './animations';
-import CountDown from '../CountDown/CountDown';
 /* import TV from '../3dModel/3dModel'; */
 const Home = () => {
    animations();
@@ -10,7 +9,7 @@ const Home = () => {
     return (
         <div className='Home'>
             <img src={`${import.meta.env.BASE_URL}imgs/Logos/PersonaTunes.svg`} className='Icon'/>
-            <CountDown />
+
             <div className="stars">
                 <img src={`${import.meta.env.BASE_URL}/star.svg`} className="star star1" />
                 <img src={`${import.meta.env.BASE_URL}/star.svg`} className="star star2" />

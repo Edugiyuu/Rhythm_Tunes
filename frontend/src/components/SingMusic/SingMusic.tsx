@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom";
 import { triggerDialogAnimation, triggerBackDialogAnimation, TPDialogBack, triggerBackDialogAnimationMode, triggerDialogAnimationMode, CutInAnimation } from "./animations";
 import { PlayAudio } from "../../utils/PlayAudio";
 import MusicEnded from "../MusicEnded/MusicEnded";
-import CountDown from "../CountDown/CountDown";
 
 interface Music {
   musicUrl: string;
@@ -29,7 +28,6 @@ function SingMusic() {
   const [randomNumber, setRandomNumber] = useState<number>(0);
   const [pacienceLevel, setpacienceLevel] = useState<number>(0);
   const [selectMode, setSelectMode] = useState<boolean>(true);
-  const [showCountDown, setShowCountDown] = useState<boolean>(false);
   const [showResult, setShowResult] = useState<boolean>(false);
   const [showLyrics, setShowLyrics] = useState(true);
   const [audioUrl, setAudioUrl] = useState<string>("");
@@ -109,16 +107,10 @@ function SingMusic() {
       return console.log("no data");
     };
 
-    setShowCountDown(true);
-
     if (useSingerVoice) {
-      setTimeout(() => {
-        setAudioUrl(data.musicUrl)
-      }, 3000);
+      setAudioUrl(data.musicUrl)
     } else {
-      setTimeout(() => {
-        setAudioUrl(data.instrumentalUrl)
-      }, 3000);
+      setAudioUrl(data.instrumentalUrl)
     }
     triggerBackDialogAnimationMode();
     setSelectMode(false);
@@ -161,14 +153,13 @@ function SingMusic() {
           </div>
         </div>
       )}
-      {showCountDown && <CountDown />}
       {showResult && (
         <MusicEnded
           albumImageUrl={data?.albumImageUrl || ""}
           musicName={data?.name || ""}
         />
       )}
-      {!selectMode && audioUrl && (
+      {!selectMode && (
         <div className="lyrics" style={{ display: showLyrics ? 'flex' : 'none' }}>
           {lyrics.map((line, i) => {
             // Pula as letras que ainda não devem ser mostradas baseado no tempo atual
