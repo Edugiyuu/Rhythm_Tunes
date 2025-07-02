@@ -135,13 +135,13 @@
 
     .ViewMusic {
         z-index: 0;
-        width: 105%;
+        width: 107%;
         height: 55%;
         margin: 0px;
         margin-right: 20px;
         align-items: end;
         bottom: -2px;
-        left: -5.3%;
+        left: -5.9%;
         
     }
 
@@ -167,6 +167,47 @@
         display: flex;
         justify-content: flex-end;
 
+    }
+
+}
+
+
+@media (max-width: 340px) {
+    .Infos {
+        clip-path: none;
+    }
+
+    .ViewMusic {
+        z-index: 0;
+        width: 107%;
+        height: 55%;
+        margin: 0px;
+        margin-right: 20px;
+        align-items: end;
+        bottom: -2px;
+        left: -6.9%;
+        
+    }
+
+    #albumImageUrl {
+    margin-bottom: 1%;
+    margin-left: 20%;
+    border-radius: 5px;
+    width: 30%;
+    min-width: 140px;
+    max-width: 160px;
+    max-height: 170px;
+    height: 40%;
+}
+
+    .ViewMusic p {
+        color: black;
+    }
+
+    .StartMusicBox a{
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 15px;
     }
 
 }
