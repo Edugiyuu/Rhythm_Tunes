@@ -151,7 +151,11 @@
   .PatchNotesGoBack {
     top: 10px;
     right: 0px;
+    width: 30%;
+    height: 8%;
+    padding: 10px;
   }
+  
 }
 @media (max-width: 432px) {
 

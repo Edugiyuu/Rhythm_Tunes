@@ -150,3 +150,20 @@
 
     }
 }
+@media (max-width: 348px) {
+    .Link {
+        font-size: 14px;
+        margin: 2px;
+        width: 45vw;
+        height: 13vh;
+    }
+
+
+    .Icon {
+        margin-left: 70px;
+        margin-top: 15%;
+        height: 280px;
+        width: 220px;
+    }
+
+}
