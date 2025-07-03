@@ -17,6 +17,7 @@ function PatchNotes() {
     return (
         <div className="PatchNotes">
             <div className="PatchNotesItens">
+                <PatchNoteItem title="Mode Selector" version="1.0.1" date="July 3, 2025" changes={["Added a new Mode Selector","Fixed scroll animation","Fixed most of the screen (responsiveness) issues","Rip chie voice.."]} />
                 <PatchNoteItem title="RELEASE" version="1.0.0" date="July 1, 2025" changes={["PROJECT RELEASE!","More updates coming soon!"]} />
             </div>
 

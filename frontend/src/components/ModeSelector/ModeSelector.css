@@ -30,7 +30,7 @@
     position: fixed;
 
     font-size: 65px;
-    color: rgb(230, 230, 230);
+    color: rgb(219, 219, 219);
     rotate: 9deg;
     width: 105%;
     height: 50%;
@@ -50,7 +50,7 @@
     display: flex;
     flex-direction: column;
     align-items: end;
-    gap: 1rem;
+    gap: 2rem;
     width: 50%;
     margin-left: 50%;
     margin-top: 25%;
@@ -69,8 +69,16 @@
     padding: 10px 20px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    border: 1px solid #1198ff;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
     box-shadow: -20px 20px 0px rgba(0, 0, 0, 0.293);
+    opacity:0
+}
+#Karaoke{
+    width: 100%;
+}
+.ModeButton:hover {
+   padding: 15px;
 }
 
 @media (max-width: 1260px) {
@@ -104,7 +112,7 @@
         font-size: 15px;
         rotate: 10deg;
         width: 100vw;
-        height: 13%;
+        height: 15%;
         margin-top: 10%;
         margin-left: 5%;
     }
@@ -128,7 +136,7 @@
     .ModeButton {
         width: 100%;
         font-size: 23px;
-         box-shadow: -10px 15px 0px;
+        box-shadow: -10px 15px 0px rgba(0, 0, 0, 0.293);
     }
 
 }

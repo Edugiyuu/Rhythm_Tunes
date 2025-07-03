@@ -1,10 +1,16 @@
+import { useEffect } from "react";
 import "../ModeSelector/ModeSelector.css"
+import { triggerModeSelector } from "./animation";
 
 interface ModeSelectorProps {
   handleModeSelect: (useSingerVoice: boolean) => void;
 }
 
 const ModeSelector: React.FC<ModeSelectorProps> = ({ handleModeSelect }) => {
+    useEffect(() => {
+        triggerModeSelector();
+    }, [])
+    
   return (
     <div className="ModeSelector">
         <div className="ModeSelectorHeader">
@@ -18,7 +24,7 @@ const ModeSelector: React.FC<ModeSelectorProps> = ({ handleModeSelect }) => {
         <button className="ModeButton" onClick={() => handleModeSelect(true)}>
           Sing together
         </button>
-        <button className="ModeButton" onClick={() => handleModeSelect(false)}>
+        <button id="Karaoke" className="ModeButton" onClick={() => handleModeSelect(false)}>
           Karaoke
         </button>
       </div>
