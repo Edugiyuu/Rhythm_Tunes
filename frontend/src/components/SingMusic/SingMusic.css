@@ -204,9 +204,9 @@
 }
 
 
-/* .SingMusic .rhap_main-controls-button.rhap_play-pause-button {
+.SingMusic .rhap_main-controls-button.rhap_play-pause-button {
   display: none;
 }
 .SingMusic .rhap_progress-container {
   pointer-events: none;
-} */
+}
