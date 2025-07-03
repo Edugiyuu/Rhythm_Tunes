@@ -13,7 +13,7 @@ function PatchNoteItem({ title, version, date, changes, image }: PatchNoteItemPr
     return (
         <div className="PatchNoteItem">
             <h2>{title}</h2>
-            <h3>version: {version}</h3>
+            <h3>Version: {version}</h3>
             <h3>Updated: {date}</h3>
             <ul>
                 {changes.map((change, id) => (

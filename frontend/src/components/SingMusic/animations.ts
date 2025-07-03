@@ -41,7 +41,7 @@ export const TPDialogBack = () => {
 export const triggerDialogAnimationMode = () => {
   gsap.fromTo('#ChieMode',
     {
-      x: 550,
+      x: 800,
       opacity: 0,
       repeat: -1,
       yoyo: true,

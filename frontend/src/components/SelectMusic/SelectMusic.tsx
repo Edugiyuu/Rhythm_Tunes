@@ -25,18 +25,23 @@ const SelectMusic = () => {
   const [musics, setMusics] = useState<Music[]>([])
 
   useEffect(() => {
-
-    axios.get(`${import.meta.env.VITE_API_URL}/musics`)
-      .then((res) => {
-        setTimeout(() => {
-          animations();
-        }, 2000);
+    const fetchMusics = async () => {
+      try {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/musics`);
         setMusics(res.data);
-      })
-      .catch((err) => {
+      } catch (err) {
         console.error(err);
-      });
+      }
+    };
+
+    fetchMusics();
   }, []);
+
+  useEffect(() => {
+    if (musics.length > 0) {
+      animations();
+    }
+  }, [musics]);
 
   return (
     <div className="SelectMusic">
