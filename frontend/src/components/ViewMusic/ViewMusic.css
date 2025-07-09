@@ -117,6 +117,48 @@
     font-style: italic;
 }
 
+@media (min-width: 1524px) {
+
+    #albumImageUrl {
+        border-radius: 5px;
+        width: 50%;
+        min-width: 250px;
+        max-width: 250px;
+        max-height: 250px;
+        height: 50%;
+    }
+
+    .StartMusic {
+    width: 40%;
+    height: 100%;
+    letter-spacing: 5px;
+    font-size: 22px;
+}
+
+    .ViewMusic p {
+        font-size: 30px;
+    }
+
+    #hard,
+    #normal,
+    #easy {
+        font-size: 4.5em;
+        font-style: italic;
+    }
+
+    .ViewMusic {
+        display: flex;
+        font-family: "Nunito";
+        position: fixed;
+        width: 55%;
+        height: 70%;
+        margin: 20px;
+        margin-left: 45%;
+    }
+
+}
+
+
 @media (max-width: 1124px) {
     .Infos {
         height: 80%;
@@ -209,7 +251,7 @@
         padding-right: 10px;
         font-size: 14px;
     }
-    
+
     #hard,
     #normal,
     #easy {
