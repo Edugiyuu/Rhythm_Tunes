@@ -5,7 +5,7 @@ import "react-h5-audio-player/lib/styles.css";
 import "../SingMusic/SingMusic.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { triggerDialogAnimation, triggerBackDialogAnimation, TPDialogBack, triggerBackDialogAnimationMode, triggerDialogAnimationMode, CutInAnimation } from "./animations";
+import { triggerDialogAnimation, triggerBackDialogAnimation, TPDialogBack, triggerBackDialogAnimationMode, triggerDialogAnimationMode, CutInAnimation, LyricsAnimation } from "./animations";
 import { PlayAudio } from "../../utils/PlayAudio";
 import MusicEnded from "../MusicEnded/MusicEnded";
 
@@ -59,6 +59,7 @@ function SingMusic() {
       .then((res) => {
         setData(res.data);
         setLyrics(res.data.lyrics);
+        
         triggerBackDialogAnimation();
       })
       .catch((err) => {
@@ -67,7 +68,7 @@ function SingMusic() {
   }, [id]);
 
   useEffect(() => {
-
+      LyricsAnimation();
     if (currentSubtitle === "♪♪♪") {
       const characters = ["Yosuke", "Chie"];
       const character = characters[Math.floor(Math.random() * characters.length)];

@@ -24,6 +24,8 @@
     width: 31vw;
     height: 100%;
     z-index: 20;
+    pointer-events: none;
+    user-select: none;
 }
 
 .ModeSelectorTitle {
@@ -69,8 +71,8 @@
     padding: 10px 20px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
     box-shadow: -20px 20px 0px rgba(0, 0, 0, 0.293);
     opacity:0
 }

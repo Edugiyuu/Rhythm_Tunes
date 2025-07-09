@@ -27,7 +27,7 @@
   min-height: 80%;
   max-height: 80%;
   justify-content: start;
-  margin-left: 5%;
+  margin-left: 4%;
   border: 2px solid white;
   padding: 3%;
   padding-top: 5px;
@@ -76,6 +76,18 @@
   color: #34a4ff;
   padding-right: 60px;
   transition: 0.3s;
+}
+
+@media (min-width: 1524px) {
+   .PatchNotes img {
+    margin-top: 8.4%;
+    height: 85vh;
+  }
+  .PatchNotesItens {
+
+    font-size: 20px;
+
+  }
 }
 
 @media (max-width: 1030px) {
