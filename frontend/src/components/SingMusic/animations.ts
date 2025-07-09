@@ -63,7 +63,7 @@ export const triggerBackDialogAnimationMode = () => {
       duration: 2,
       opacity: 0,
       ease: "expo.inOut",
-      
+
     },
   );
 };
@@ -92,18 +92,18 @@ export const CutInAnimation = () => {
       opacity: 1,
       ease: "circ.inOut",
     });
-  gsap.fromTo('#CutInChar',{
+  gsap.fromTo('#CutInChar', {
     opacity: 0.8,
     scale: 0.4,
     rotateX: 90,
   },
-  {
-    scale: 1,
-    rotateX: 0,
-    duration: 0.6,
-    opacity: 1,
-    ease: "power4.inOut",
-  });
+    {
+      scale: 1,
+      rotateX: 0,
+      duration: 0.6,
+      opacity: 1,
+      ease: "power4.inOut",
+    });
 
   gsap.to('#CutInChar',
     {
@@ -114,18 +114,18 @@ export const CutInAnimation = () => {
       ease: "power1.inOut",
     }
   )
-/*   gsap.fromTo('.cutin-effect',{
-   x: -800,   
-  },
-  {
-    x: 800,
-    duration: 0.4,
-    repeat: -1,
-    stagger: 0.06,
-    yoyo: true,
-    ease: "power1.inOut",
-  }
-) */
+  /*   gsap.fromTo('.cutin-effect',{
+     x: -800,   
+    },
+    {
+      x: 800,
+      duration: 0.4,
+      repeat: -1,
+      stagger: 0.06,
+      yoyo: true,
+      ease: "power1.inOut",
+    }
+  ) */
 
   gsap.fromTo('#CutInChar', {
     opacity: 1,
@@ -145,4 +145,34 @@ export const CutInAnimation = () => {
         });
       }
     });
+};
+
+export const LyricsAnimation = () => {
+      // Animação de batida de coração
+      gsap.set('.highlighted', { scale: 1, filter: 'drop-shadow(0 0 0px transparent)' });
+      const tl = gsap.timeline({ repeat: -1, });
+      tl.to('.highlighted', {
+        scale: 1.02,
+        duration: 0.1,
+        ease: 'power1.in',
+       
+      })
+      .to('.highlighted', {
+        scale: 1,
+        duration: 0.3,
+        ease: 'power1.out',
+      
+      })
+      .to('.highlighted', {
+        scale: 1.02,
+        duration: 0.1,
+        ease: 'power1.in',
+       
+      })
+      .to('.highlighted', {
+        scale: 1,
+        duration: 0.3,
+        ease: 'power1.out',
+     
+      })
 };
