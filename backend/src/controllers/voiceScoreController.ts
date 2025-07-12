@@ -2,50 +2,90 @@ import { Request, Response } from "express";
 import { spawn } from "child_process";
 import path from "path";
 import fs from "fs";
+import { v4 as uuidv4 } from "uuid";
 import Music from "../models/music";
 
+// Armazenamento temporário em memória (pode ser trocado por Mongo depois)
+type ResultData = {
+  score: number;
+  transcription: string;
+};
+//Map é uma class
+const resultStore = new Map<string, ResultData>();
+
+// POST /score/:id
 export const analyzeVoice = async (req: Request, res: Response) => {
-    try {
-        const file = req.file;
-        const musicId = req.params.id;
+  try {
+    const file = req.file;
+    const musicId = req.params.id;
 
-        if (!file) return res.status(400).json({ error: "Nenhum áudio enviado" });
-        if (!musicId) return res.status(400).json({ error: "ID da música ausente" });
+    if (!file) return res.status(400).json({ error: "Nenhum áudio enviado" });
+    if (!musicId) return res.status(400).json({ error: "ID da música ausente" });
 
-        const music = await Music.findById(musicId);
-        if (!music) return res.status(404).json({ error: "Música não encontrada" });
+    const music = await Music.findById(musicId);
+    if (!music) return res.status(404).json({ error: "Música não encontrada" });
 
-        const expectedLyrics = music.lyrics.map(line => line.text).join(" ");
-        console.log("Letra esperada:", expectedLyrics);
+    const expectedLyrics = music.lyrics.map(line => line.text).join(" ");
+    const audioPath = path.resolve(file.path);
+    const requestId = uuidv4();
 
-        const audioPath = path.resolve(file.path);
+    setImmediate(() => {
+      const pythonProcess = spawn("python", [
+        "src/python/transcribe.py",
+        audioPath,
+        expectedLyrics,
+      ]);
 
-        const pythonProcess = spawn("python", [
-            "src/python/transcribe.py",
-            audioPath,
-            expectedLyrics,
-        ]);
+      let output = "";
 
-        let output = "";
-        pythonProcess.stdout.on("data", (data) => {
-            console.log("Saída Python:", data.toString());
-            output += data.toString();
+      pythonProcess.stdout.on("data", (data) => {
+        output += data.toString();
+      });
+
+      pythonProcess.stderr.on("data", (data) => {
+        console.error(`Python Error ${data}`);
+      });
+
+      pythonProcess.on("close", () => {
+        fs.unlink(audioPath, (err) => {
+          if (err) console.error("Erro ao remover arquivo:", err);
         });
 
-        pythonProcess.stderr.on("data", (data) => {
-            console.error("Erro Python:", data.toString());
-        });
+        const [scoreStr, ...transcriptionLines] = output.trim().split("\n");
+        const score = parseFloat(scoreStr) || 0;
+        const transcription = transcriptionLines.join("\n").trim();
 
-        pythonProcess.on("close", () => {
-            fs.unlinkSync(audioPath);
+        resultStore.set(requestId, { score, transcription });
+        console.log(`Transcrição completa ID: ${requestId}`);
 
-            const [scoreStr, transcription] = output.trim().split("\n");
-            const score = parseFloat(scoreStr) || 0;
+        setTimeout(() => {
+          resultStore.delete(requestId);
+        }, 1000 * 60 * 5);
+      });
+    });
 
-            res.json({ score, transcription });
-        });
-    } catch (error) {
-        console.error("Erro no analyzeVoice:", error);
-        res.status(500).json({ error: "Erro ao processar o áudio" });
-    }
+    res.status(202).json({
+      status: "processing",
+      requestId,
+    });
+
+  } catch (error) {
+    console.error("Erro no analyzeVoice:", error);
+    res.status(500).json({ error: "Erro ao processar o áudio" });
+  }
+};
+
+// GET /score/result/:requestId
+export const getVoiceResult = (req: Request, res: Response) => {
+  const requestId = req.params.requestId;
+  const result = resultStore.get(requestId);
+
+  if (!result) {
+    return res.status(202).json({ status: "processing" });
+  }
+
+  res.status(200).json({
+    status: "done",
+    ...result,
+  });
 };
