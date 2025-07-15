@@ -5,7 +5,7 @@ import fs from "fs";
 import { v4 as uuidv4 } from "uuid";
 import Music from "../models/music";
 
-// Armazenamento temporário em memória (pode ser trocado por Mongo depois)
+// Armazenamento temporário em memória
 type ResultData = {
   score: number;
   transcription: string;
@@ -31,9 +31,9 @@ export const analyzeVoice = async (req: Request, res: Response) => {
 
     setImmediate(() => {
       const pythonProcess = spawn("python", [
-        "src/python/transcribe.py",
-        audioPath,
-        expectedLyrics,
+        "src/python/transcribe.py", //sys.argv[0]
+        audioPath, //sys.argv[1]
+        expectedLyrics, //sys.argv[2]
       ]);
 
       let output = "";
@@ -50,7 +50,7 @@ export const analyzeVoice = async (req: Request, res: Response) => {
         fs.unlink(audioPath, (err) => {
           if (err) console.error("Erro ao remover arquivo:", err);
         });
-
+        // trim tira os espaços em branco do começo e do final da string
         const [scoreStr, ...transcriptionLines] = output.trim().split("\n");
         const score = parseFloat(scoreStr) || 0;
         const transcription = transcriptionLines.join("\n").trim();

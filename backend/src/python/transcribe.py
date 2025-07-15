@@ -29,8 +29,8 @@ for i, chunk in enumerate(chunks):
         full_transcription += " " + text
     except sr.UnknownValueError:
         pass
-    except sr.RequestError as e:
-        print(f"Erro na API no chunk {i}: {e}", file=sys.stderr)
+    except sr.RequestError:
+        print("Erro na API no chunk")
 
     os.remove(chunk_filename)
 
