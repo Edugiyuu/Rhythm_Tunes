@@ -15,10 +15,11 @@ expected_lyrics = re.sub(r'[♪!,.]', '', expected_lyrics)
 sound = AudioSegment.from_file(audio_path)
 sound = sound.set_frame_rate(16000).set_channels(1)
 
-# Divide em pedaços de 10s (máximo que o Google lida bem)
-chunks = make_chunks(sound, 10000)
+chunks = make_chunks(sound, 5000)
 
 recognizer = sr.Recognizer()
+recognizer.energy_threshold = 150
+recognizer.dynamic_energy_threshold = True
 full_transcription = ""
 total_chunks = len(chunks)
 failed_chunks = 0
@@ -45,7 +46,7 @@ similarity = SequenceMatcher(None, full_transcription.lower(), expected_lyrics.l
 
 # Ajusta a pontuação baseado em quantos chunks falharam
 failure_rate = failed_chunks / total_chunks
-bonus = failure_rate * 40  # Dá até 40 pontos de bônus dependendo de quantos chunks falharam
+bonus = failure_rate * 30  # Dá até 40 pontos de bônus dependendo de quantos chunks falharam
 score = round((similarity * 100) * 3 + bonus, 2)
 
 # Garante que a pontuação não passe de 100

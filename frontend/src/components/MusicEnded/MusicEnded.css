@@ -53,20 +53,6 @@
     padding: 0px;
 }
 
-.wip {
-    font-weight: bold;
-    font-family: 'Rodin';
-    color: rgb(250, 224, 59) !important;
-    text-shadow: rgba(0, 0, 0, 0.605) 3px 2px 0px;
-    letter-spacing: 8px;
-}
-
-
-#wip {
-    font-size: 4.5em;
-    font-style: italic;
-}
-
 .Return {
     display: flex;
     justify-content: center;
@@ -92,17 +78,104 @@
     box-shadow: rgba(0, 0, 0, 0.2) 10px 10px 0px -5px
 }
 
-.ScoreBackground{
+.ScoreWrapper {
+    position: relative;
     width: 65%;
-    height: 5%;
+    margin: 0 auto;
+    height: 80px;
+}
+
+.ScoreLabels {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    pointer-events: none;
+    z-index: 3;
+    color: #000;
+    font-weight: bold;
+    font-family: 'Rodin';
+    color: rgb(255, 0, 0);
+     text-shadow: rgba(120, 120, 120, 0.605) 2px 1px 2px;
+}
+
+.ScoreLabels span {
+    font-size: 1.5rem
+}
+
+.ScoreBackground {
+    width: 100%;
+    height: 20px;
     border-radius: 15px;
     background-color: rgb(220, 220, 220);
+    border: 1px solid rgb(189, 189, 189);
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+
 }
-.ScoreBar{
+
+.ScoreBackground::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    z-index: 2;
+
+    background-image:
+        url('/star.svg'),
+        url('/star.svg'),
+        url('/star.svg'),
+        url('/star.svg'),
+        url('/star.svg'),
+        url('/star.svg');
+
+    background-repeat: no-repeat;
+    background-position:
+        7% 0,
+        23.6% 0,
+        41% 0,
+        59% 0,
+        76% 0,
+        94% 0;
+
+    background-size: 4% 100%;
+}
+
+.ScoreBar {
     background-color: rgb(28, 209, 28);
     border-radius: 15px;
     height: 100%;
+    width: 40%;
+    /* ou baseado no score */
+    position: relative;
+    z-index: 1;
 }
+
+#LabelF {
+    color: rgb(125, 144, 163) !important;
+}
+#LabelE {
+    color: rgb(195, 101, 229) !important;
+}
+#LabelD {
+    color: rgb(88, 147, 249) !important;
+}
+#LabelC {
+    color: rgb(42, 228, 132) !important;
+}
+#LabelB {
+    color: rgb(239, 39, 202) !important;
+}
+#LabelA {
+    color: rgb(251, 102, 43) !important;
+}
+
 
 @media (max-width: 668px) {
     .Result {
@@ -128,19 +201,6 @@
         font-size: 1.3rem;
     }
 
-    .wip {
-        font-weight: bold;
-        font-family: 'Rodin';
-        color: rgb(250, 224, 59) !important;
-        text-shadow: rgba(0, 0, 0, 0.605) 3px 2px 0px;
-        letter-spacing: 8px;
-    }
-
-
-    #wip {
-        font-size: 3.4em;
-        font-style: italic;
-    }
 
     .MusicEnded img {
         width: 80%;

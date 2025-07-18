@@ -31,3 +31,17 @@ export const triggerResult = () => {
     },
   );
 };
+
+export const triggerScoreBar = (score: number) => {
+  gsap.fromTo('.ScoreBar', {
+    width: "0%",
+  },
+    {
+      width: `${score}%`,
+      duration: 2,
+      opacity: 1,
+
+      ease: "power1.inOut",
+    },
+  );
+};
