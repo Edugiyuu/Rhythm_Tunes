@@ -4,6 +4,7 @@ import path from "path";
 import fs from "fs";
 import { v4 as uuidv4 } from "uuid";
 import Music from "../models/music";
+import { log } from "console";
 
 // Armazenamento temporário em memória
 type ResultData = {
@@ -40,6 +41,7 @@ export const analyzeVoice = async (req: Request, res: Response) => {
 
       pythonProcess.stdout.on("data", (data) => {
         output += data.toString();
+        log(`Python Output: ${data}`);
       });
 
       pythonProcess.stderr.on("data", (data) => {
@@ -55,8 +57,10 @@ export const analyzeVoice = async (req: Request, res: Response) => {
         const score = parseFloat(scoreStr) || 0;
         const transcription = transcriptionLines.join("\n").trim();
 
-        resultStore.set(requestId, { score, transcription });
+
+        resultStore.set(requestId, { score, transcription});
         console.log(`Transcrição completa ID: ${requestId}`);
+        
 
         setTimeout(() => {
           resultStore.delete(requestId);

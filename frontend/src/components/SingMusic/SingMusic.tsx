@@ -6,7 +6,7 @@ import "../SingMusic/SingMusic.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import AutoVoiceRecorder from "../AudioRecorder/AutoVoiceRecorder";
-import { triggerDialogAnimation, triggerBackDialogAnimation, TPDialogBack, triggerBackDialogAnimationMode, triggerDialogAnimationMode, CutInAnimation, LyricsAnimation } from "./animations";
+import { triggerDialogAnimation, triggerBackDialogAnimation, TPDialogBack, triggerBackDialogAnimationMode, CutInAnimation, LyricsAnimation } from "./animations";
 import { PlayAudio } from "../../utils/PlayAudio";
 import MusicEnded from "../MusicEnded/MusicEnded";
 
@@ -28,7 +28,6 @@ function SingMusic() {
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [currentSubtitle, setCurrentSubtitle] = useState<string>("");
   const [randomNumber, setRandomNumber] = useState<number>(0);
-  //  const [pacienceLevel, setpacienceLevel] = useState<number>(0);
   const [selectMode, setSelectMode] = useState<boolean>(true);
   const [showResult, setShowResult] = useState<boolean>(false);
   const [showLyrics, setShowLyrics] = useState(true);
@@ -39,23 +38,6 @@ function SingMusic() {
   const [character, setCharacter] = useState('');
   const { id } = useParams();
 
-  //chie talking
-  /* useEffect(() => {
-    PlayAudio(`${import.meta.env.BASE_URL}/audios/Chie/ModeSelector/Chie-${pacienceLevel}.mp3`);
-    triggerDialogAnimationMode();
-  }, [pacienceLevel]);
-
-  useEffect(() => {
-    if (selectMode) {
-      const timer1 = setTimeout(() => {
-        setpacienceLevel(1);
-      }, 20000);
-
-      return () => {
-        clearTimeout(timer1);
-      }
-    }
-  }, [selectMode]); */
 
   useEffect(() => {
     TPDialogBack();
@@ -228,10 +210,6 @@ function SingMusic() {
 
         </div>
       )}
-
-      {/* <div className="PersonaChar" id="ChieMode">
-        <img src={`${import.meta.env.BASE_URL}/imgs/Chie/ModeSelector/Chie-${pacienceLevel}.png`} />
-      </div> */}
 
       <div className="PersonaChar" id="RandomChar">
         <img src={`${import.meta.env.BASE_URL}/imgs/${character}/InMusic/${character}-${randomNumber}.png`} />

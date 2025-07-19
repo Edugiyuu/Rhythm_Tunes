@@ -10,7 +10,7 @@ interface MusicEndedProps {
   userAudioId: string;
 }
 
-function MusicEnded({ albumImageUrl, musicName, userAudioId }: MusicEndedProps) {
+function MusicEnded({ albumImageUrl, userAudioId }: MusicEndedProps) {
   const [score, setScore] = useState<number | null>(null);
   const [rank, setRank] = useState<string>('');
 
@@ -30,7 +30,6 @@ function MusicEnded({ albumImageUrl, musicName, userAudioId }: MusicEndedProps) 
           console.log("Tentando pegar score:", newScore);
           if (newScore) {
             setScore(newScore);
-            triggerScoreBar(newScore);
             clearInterval(interval); // para de tentar após obter
           }
         })
@@ -44,19 +43,22 @@ function MusicEnded({ albumImageUrl, musicName, userAudioId }: MusicEndedProps) 
 
   useEffect(() => {
     if (score !== null) {
+      let newRank;
       if (score >= 90) {
-        setRank('A');
+        newRank = 'A';
       } else if (score >= 76) {
-        setRank('B');
+        newRank = 'B';
       } else if (score >= 60) {
-        setRank('C');
+        newRank = 'C';
       } else if (score >= 42) {
-        setRank('D');
+        newRank = 'D';
       } else if (score >= 23) {
-        setRank('E');
+        newRank = 'E';
       } else {
-        setRank('F');
+        newRank = 'F';
       }
+      setRank(newRank);
+      triggerScoreBar(score, newRank);
     }
   }, [score]);
 
@@ -65,22 +67,27 @@ function MusicEnded({ albumImageUrl, musicName, userAudioId }: MusicEndedProps) 
     <div className='MusicEnded'>
       <img src={albumImageUrl} alt="Album Cover" />
       <div className='Result'>
-        <h2>{musicName}</h2>
-
+        
         <div className='Score'>
-          <p>Score:</p>
-          <p>{score ? score : "Carregando score..."}</p>
-          <p>Letra:{rank}</p>
+          <div className='ScorePoints'>
+            <p id='PointsShow'>Points:</p>
+            <p id='Points'>{score ? score.toFixed() : "..."}</p>
+          </div>
+          <div className='ScoreRank'>
+            <p id='RankShow'>Rank:</p>
+          <p id='Rank' className={`Label${rank}`}>{rank ? rank : "?"}</p>
+          </div>
+          
 
         </div>
         <div className="ScoreWrapper">
           <div className="ScoreLabels">
-            <span id='LabelF'>F</span>
-            <span id='LabelE'>E</span>
-            <span id='LabelD'>D</span>
-            <span id='LabelC'>C</span>
-            <span id='LabelB'>B</span>
-            <span id='LabelA'>A</span>
+            <span className='LabelF'>F</span>
+            <span className='LabelE'>E</span>
+            <span className='LabelD'>D</span>
+            <span className='LabelC'>C</span>
+            <span className='LabelB'>B</span>
+            <span className='LabelA'>A</span>
           </div>
 
           <div className="ScoreBackground">
@@ -88,8 +95,8 @@ function MusicEnded({ albumImageUrl, musicName, userAudioId }: MusicEndedProps) 
           </div>
         </div>
 
-
         <CustomLink className='Return' to='/musics' title="Return" />
+        <footer>The results may take awhile to calculate be patient..</footer>
       </div>
     </div>
   );

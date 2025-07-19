@@ -18,7 +18,7 @@ sound = sound.set_frame_rate(16000).set_channels(1)
 chunks = make_chunks(sound, 5000)
 
 recognizer = sr.Recognizer()
-recognizer.energy_threshold = 150
+recognizer.energy_threshold = 100
 recognizer.dynamic_energy_threshold = True
 full_transcription = ""
 total_chunks = len(chunks)
@@ -46,8 +46,9 @@ similarity = SequenceMatcher(None, full_transcription.lower(), expected_lyrics.l
 
 # Ajusta a pontuação baseado em quantos chunks falharam
 failure_rate = failed_chunks / total_chunks
-bonus = failure_rate * 30  # Dá até 40 pontos de bônus dependendo de quantos chunks falharam
-score = round((similarity * 100) * 3 + bonus, 2)
+bonus = failure_rate * 30  
+# tive que aumentar o multiplicador para 6 porque no front o audio fica pior quando canta
+score = round((similarity * 100) * 6 + bonus, 2)
 
 # Garante que a pontuação não passe de 100
 score = min(100, score)
